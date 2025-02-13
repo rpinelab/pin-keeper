@@ -12,8 +12,6 @@ export default defineConfig({
   srcDir: 'src',
   modules: ['@wxt-dev/module-react'],
   vite: () => ({
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   }),
 });
