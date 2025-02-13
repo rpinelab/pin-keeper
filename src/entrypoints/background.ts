@@ -1,3 +1,5 @@
 export default defineBackground(() => {
-  console.log('Hello background!', { id: browser.runtime.id });
+  (browser.action ?? browser.browserAction).onClicked.addListener(async () => {
+    await restorePinnedTabs();
+  });
 });
