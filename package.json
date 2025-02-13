@@ -12,7 +12,8 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
+    "postinstall": "wxt prepare",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
@@ -44,5 +45,12 @@
     "overrides": {
       "vite": "$vite"
     }
+  },
+  "lint-staged": {
+    "*.{js,cjs,mjs,jsx,tx,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "!(*.{js,cjs,mjs,jsx,tx,tsx})": "prettier --write --ignore-unknown"
   }
 }
