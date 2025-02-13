@@ -1,5 +1,6 @@
 import autoImports from './.wxt/eslint-auto-imports.mjs';
 import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
 
 
@@ -28,4 +29,5 @@ export default tseslint.config(
       '@typescript-eslint/no-non-null-assertion': 'off',
     },
   },
+  eslintConfigPrettier,
 );
