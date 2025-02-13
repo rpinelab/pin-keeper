@@ -1,6 +1,6 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "pin-keeper",
+  "description": "Automatically manage and restore pinned tabs with flexible URL matching rules",
   "private": true,
   "version": "0.0.0",
   "type": "module",
