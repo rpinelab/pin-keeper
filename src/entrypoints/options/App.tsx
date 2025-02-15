@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col gap-4'>
+    <main className='flex flex-col gap-4 bg-background min-h-screen p-4'>
       <h1 className='text-3xl'>PinKeeper Option</h1>
       <h2 className='text-xl'>Pinned URLs</h2>
       <section className='flex flex-col gap-2'>
