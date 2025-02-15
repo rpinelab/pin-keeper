@@ -23,6 +23,7 @@ export default tseslint.config(
     },
     rules: {
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unnecessary-condition': 'off',
     },
   },
   eslintConfigPrettier,
