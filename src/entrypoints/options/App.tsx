@@ -8,7 +8,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { usePinnedUrlSettings } from '@/hooks/usePinnedUrlSettings';
-import { UrlMatchType } from '@/utils/storage';
+import {
+  UrlMatchType,
+  urlMatchTypeLabels,
+  urlMatchTypes,
+} from '@/utils/storage';
 import { Plus, Trash2 } from 'lucide-react';
 import { nanoid } from 'nanoid';
 

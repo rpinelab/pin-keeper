@@ -10,6 +10,7 @@ export default defineConfig({
   },
   extensionApi: 'chrome',
   srcDir: 'src',
+  imports: false,
   modules: ['@wxt-dev/module-react'],
   vite: () => ({
     plugins: [tailwindcss()],

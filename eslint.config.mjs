@@ -1,4 +1,3 @@
-import autoImports from './.wxt/eslint-auto-imports.mjs';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
@@ -8,7 +7,6 @@ export default tseslint.config(
   {
     ignores: ['.output', '.wxt', 'src/components/ui/*'],
   },
-  autoImports,
   eslint.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
