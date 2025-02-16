@@ -38,6 +38,8 @@
     "@wxt-dev/module-react": "^1.1.2",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-typescript": "^3.8.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",
     "husky": "^9.1.7",
     "prettier": "3.5.1",

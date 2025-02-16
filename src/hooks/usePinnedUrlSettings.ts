@@ -1,5 +1,6 @@
-import { PinnedUrlSetting, pinnedUrlSettingsStorage } from '@/utils/storage';
 import { useCallback, useEffect, useState } from 'react';
+
+import { PinnedUrlSetting, pinnedUrlSettingsStorage } from '@/utils/storage';
 
 export function usePinnedUrlSettings() {
   const [pinnedUrlSettings, rawSetPinnedUrlSettings] = useState<

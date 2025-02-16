@@ -1,3 +1,6 @@
+import { Plus, Trash2 } from 'lucide-react';
+import { nanoid } from 'nanoid';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -13,8 +16,6 @@ import {
   urlMatchTypeLabels,
   urlMatchTypes,
 } from '@/utils/storage';
-import { Plus, Trash2 } from 'lucide-react';
-import { nanoid } from 'nanoid';
 
 function App() {
   const [pinnedUrlSettings, setPinnedUrlSettings] = usePinnedUrlSettings();

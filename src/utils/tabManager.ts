@@ -1,4 +1,5 @@
 import { browser } from 'wxt/browser';
+
 import { pinnedUrlSettingsStorage } from './storage';
 
 export const restorePinnedTabs = async () => {
