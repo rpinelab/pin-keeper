@@ -6,7 +6,7 @@ import reactPlugin from 'eslint-plugin-react';
 
 export default tseslint.config(
   {
-    ignores: ['.output', '.wxt'],
+    ignores: ['.output', '.wxt', 'src/components/ui/*'],
   },
   autoImports,
   eslint.configs.recommended,

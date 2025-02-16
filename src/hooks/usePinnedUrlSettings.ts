@@ -16,7 +16,9 @@ export function usePinnedUrlSettings() {
       rawSetPinnedUrlSettings(settings);
     });
 
-    return () => unwatch();
+    return () => {
+      unwatch();
+    };
   }, []);
 
   const setPinnedUrlSettings = useCallback((settings: PinnedUrlSetting[]) => {
