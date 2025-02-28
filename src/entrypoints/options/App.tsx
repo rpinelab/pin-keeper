@@ -83,7 +83,7 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col gap-2 bg-background min-h-screen p-4 min-w-[800px]'>
+    <main className='flex flex-col gap-2 bg-background min-h-screen p-4 min-w-[600px]'>
       <header className='border-b border-foreground'>
         <h1 className='text-3xl font-bold border-b border-foreground pb-1'>
           PinKeeper Option
