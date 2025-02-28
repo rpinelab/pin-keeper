@@ -5,7 +5,7 @@ import { defineConfig } from 'wxt';
 export default defineConfig({
   manifest: {
     name: 'Pin Keeper - Smart Pinned Tab Manager',
-    permissions: ['storage', 'tabs'],
+    permissions: ['notifications', 'storage', 'tabs'],
     action: {},
   },
   extensionApi: 'chrome',

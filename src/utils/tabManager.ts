@@ -8,7 +8,11 @@ export const restorePinnedTabs = async () => {
   const pinnedUrlConfigs = await pinnedUrlSettingsStorage.getValue();
 
   if (pinnedUrlConfigs.length === 0) {
-    window.alert('No pinned URLs configured');
+    await browser.notifications.create({
+      type: 'basic',
+      title: 'No pinned URLs configured',
+      message: 'Please configure pinned URLs in the extension settings',
+    });
     return;
   }
 
