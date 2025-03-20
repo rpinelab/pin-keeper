@@ -1,15 +1,15 @@
+import { Plus, Save } from 'lucide-react';
+import { useFormStatus } from 'react-dom';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from '@radix-ui/react-select';
-import { Plus, Save } from 'lucide-react';
-import { useFormStatus } from 'react-dom';
-
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+} from '@/components/ui/select';
 import { PinnedUrlSetting, urlMatchTypes } from '@/utils/storage';
 
 export function EditPinnedUrlForm({
