@@ -1,6 +1,6 @@
-import { browser } from 'wxt/browser';
+import { browser, Tabs } from 'wxt/browser';
 
-import { pinnedUrlSettingsStorage } from './storage';
+import { PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
 export const restorePinnedTabs = async () => {
   const pinnedTabs = await browser.tabs.query({ pinned: true });
@@ -17,18 +17,57 @@ export const restorePinnedTabs = async () => {
   }
 
   for (const pinnedUrlConfig of pinnedUrlConfigs) {
-    const matchedTabs = pinnedTabs.filter((tab) =>
-      tab.url?.startsWith(pinnedUrlConfig.url),
-    );
-    if (matchedTabs.length > 0) {
-      continue;
-    }
+    try {
+      const tabMatcher = createTabUrlMatcher(pinnedUrlConfig);
 
-    // Open a new tab and pin it
-    await browser.tabs.create({
-      url: pinnedUrlConfig.url,
-      pinned: true,
-      active: false,
-    });
+      const tabExists = pinnedTabs.some(tabMatcher);
+      if (tabExists) {
+        continue;
+      }
+
+      // Open a new tab and pin it
+      await browser.tabs.create({
+        url: pinnedUrlConfig.url,
+        pinned: true,
+        active: false,
+      });
+    } catch (error) {
+      console.error('Failed to process pinned URL config:', error);
+      await browser.notifications.create({
+        type: 'basic',
+        title: 'Failed to process pinned URL',
+        message: `Failed to process pinned URL: ${error instanceof Error ? error.message : String(error)}`,
+      });
+    }
   }
 };
+
+function createTabUrlMatcher(
+  pinnedUrlConfig: PinnedUrlSetting,
+): (tab: Tabs.Tab) => boolean {
+  switch (pinnedUrlConfig.matchType) {
+    case 'exact': {
+      return (tab) =>
+        tab.url === (pinnedUrlConfig.matchPattern || pinnedUrlConfig.url);
+    }
+    case 'startsWith': {
+      return (tab) =>
+        tab.url?.startsWith(
+          pinnedUrlConfig.matchPattern || pinnedUrlConfig.url,
+        ) ?? false;
+    }
+    case 'regex': {
+      try {
+        const urlPatternRegex = new RegExp(
+          pinnedUrlConfig.matchPattern || pinnedUrlConfig.url,
+        );
+        return (tab) => urlPatternRegex.test(tab.url ?? '');
+      } catch (error) {
+        throw new Error(
+          `Invalid regex pattern: ${pinnedUrlConfig.matchPattern}`,
+          { cause: error },
+        );
+      }
+    }
+  }
+}

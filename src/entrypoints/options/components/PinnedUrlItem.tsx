@@ -20,6 +20,11 @@ export function PinnedUrlItem({
       <span className='text-sm text-muted-foreground'>
         {urlMatchTypeLabels[pinnedUrl.matchType]}
       </span>
+      {pinnedUrl.matchPattern && (
+        <span className='text-sm text-muted-foreground italic'>
+          {pinnedUrl.matchPattern}
+        </span>
+      )}
       <Button
         type='button'
         variant='default'

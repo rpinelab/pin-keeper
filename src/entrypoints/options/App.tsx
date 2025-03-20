@@ -11,10 +11,7 @@ function App() {
   const [pinnedUrlSettings] = usePinnedUrlSettings();
   const [editingId, setEditingId] = useState<string | null>(null);
 
-  const [editUrlState, editUrl] = useActionState(
-    editUrlInStorage.bind(null),
-    null,
-  );
+  const [editUrlState, editUrl] = useActionState(editUrlInStorage, null);
 
   useEffect(() => {
     if (editUrlState?.success === false && editUrlState.error) {
@@ -36,10 +33,6 @@ function App() {
     }
   }, [deleteUrlState]);
 
-  const startEditUrl = (id: string) => {
-    setEditingId(id);
-  };
-
   return (
     <main className='flex flex-col gap-2 bg-background min-h-screen p-4 min-w-[600px]'>
       <header className='border-b border-foreground'>
@@ -58,13 +51,16 @@ function App() {
             <li key={pinnedUrl.id}>
               {editingId === pinnedUrl.id ? (
                 <EditPinnedUrlForm
+                  cancelEdit={() => {
+                    setEditingId(null);
+                  }}
                   action={editUrl}
                   initialValue={pinnedUrl}
                   submitText='Save'
                 />
               ) : (
                 <PinnedUrlItem
-                  editUrl={startEditUrl}
+                  editUrl={setEditingId}
                   deleteUrl={deleteUrl}
                   pinnedUrl={pinnedUrl}
                 />

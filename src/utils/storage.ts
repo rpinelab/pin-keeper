@@ -20,6 +20,7 @@ export interface PinnedUrlSetting {
   id: string;
   url: string;
   matchType: UrlMatchType;
+  matchPattern: string;
 }
 
 export const pinnedUrlSettingsStorage = storage.defineItem<PinnedUrlSetting[]>(

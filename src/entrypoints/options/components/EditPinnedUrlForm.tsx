@@ -1,4 +1,4 @@
-import { Plus, Save } from 'lucide-react';
+import { Plus, Save, X } from 'lucide-react';
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/components/ui/button';
@@ -16,13 +16,15 @@ export function EditPinnedUrlForm({
   action: addUrl,
   initialValue,
   submitText = 'Add',
+  cancelEdit,
 }: {
   action: (formData: FormData) => void;
   initialValue?: PinnedUrlSetting;
   submitText?: string;
+  cancelEdit?: () => void;
 }) {
   return (
-    <form className='flex gap-2' action={addUrl}>
+    <form className='grid grid-cols-[1fr_auto] gap-3' action={addUrl}>
       {initialValue && (
         <input type='hidden' name='id' value={initialValue.id} />
       )}
@@ -30,7 +32,8 @@ export function EditPinnedUrlForm({
         name='url'
         type='text'
         defaultValue={initialValue?.url}
-        placeholder='Enter URL to pin'
+        placeholder='URL to pin'
+        className='flex-grow'
       />
       <Select
         defaultValue={initialValue?.matchType ?? 'exact'}
@@ -47,7 +50,22 @@ export function EditPinnedUrlForm({
           ))}
         </SelectContent>
       </Select>
-      <SubmitButton submitText={submitText} />
+      <Input
+        name='matchPattern'
+        type='text'
+        defaultValue={initialValue?.matchPattern}
+        placeholder='Match pattern (defaults to URL if left empty)'
+        className='flex-grow'
+      />
+      <div className='flex justify-end gap-2'>
+        <SubmitButton submitText={submitText} />
+        {cancelEdit && (
+          <Button type='button' variant='outline' onClick={cancelEdit}>
+            <X className='h-4 w-4' />
+            Cancel
+          </Button>
+        )}
+      </div>
     </form>
   );
 }

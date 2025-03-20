@@ -22,6 +22,7 @@ export async function editUrlInStorage(
   const id = formData.get('id') as string | null; // null if adding new URL
   const url = formData.get('url') as string;
   const matchType = formData.get('matchType') as UrlMatchType;
+  const matchPattern = formData.get('matchPattern') as string;
 
   if (url == '') {
     return { success: false, error: new Error('URL is required') };
@@ -37,6 +38,7 @@ export async function editUrlInStorage(
     id: id ?? nanoid(),
     url: url,
     matchType: matchType,
+    matchPattern: matchPattern,
   };
 
   try {
