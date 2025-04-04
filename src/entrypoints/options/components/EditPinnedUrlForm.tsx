@@ -24,7 +24,10 @@ export function EditPinnedUrlForm({
   cancelEdit?: () => void;
 }) {
   return (
-    <form className='grid grid-cols-[1fr_auto] gap-3' action={addUrl}>
+    <form
+      className='grid grid-cols-[auto_1fr_auto] gap-3 border p-2'
+      action={addUrl}
+    >
       {initialValue && (
         <input type='hidden' name='id' value={initialValue.id} />
       )}
@@ -33,13 +36,13 @@ export function EditPinnedUrlForm({
         type='text'
         defaultValue={initialValue?.url}
         placeholder='URL to pin'
-        className='flex-grow'
+        className='col-span-3'
       />
       <Select
         defaultValue={initialValue?.matchType ?? 'exact'}
         name='matchType'
       >
-        <SelectTrigger className='w-[180px]'>
+        <SelectTrigger className='w-36 min-w-fit'>
           <SelectValue placeholder='Match Strategy' />
         </SelectTrigger>
         <SelectContent>
