@@ -30,3 +30,11 @@ export const pinnedUrlSettingsStorage = storage.defineItem<PinnedUrlSetting[]>(
     fallback: [],
   },
 );
+
+export const startupDelayStorage = storage.defineItem<number>(
+  'local:startupDelay',
+  {
+    version: 1,
+    fallback: 100,
+  },
+);

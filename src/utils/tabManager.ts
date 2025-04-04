@@ -2,6 +2,7 @@ import { browser, Tabs } from 'wxt/browser';
 
 import { PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
+// Main function to restore pinned tabs
 export const restorePinnedTabs = async () => {
   const pinnedTabs = await browser.tabs.query({ pinned: true });
 
