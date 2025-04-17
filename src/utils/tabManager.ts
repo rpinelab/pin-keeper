@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { browser, Tabs } from 'wxt/browser';
 
 import { PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
@@ -72,3 +73,47 @@ function createTabUrlMatcher(
     }
   }
 }
+
+// Add current pinned tabs to settings
+export const addCurrentPinnedTabsToSettings = async () => {
+  try {
+    const currentPinnedTabs = await browser.tabs.query({ pinned: true });
+
+    if (currentPinnedTabs.length === 0) {
+      return;
+    }
+
+    const existingSettings = await pinnedUrlSettingsStorage.getValue();
+
+    // Process each pinned tab
+    for (const tab of currentPinnedTabs) {
+      if (!tab.url) {
+        continue;
+      }
+
+      // Check if this URL is already in settings
+      const alreadyExists = existingSettings.some((setting) =>
+        createTabUrlMatcher(setting)(tab),
+      );
+
+      if (!alreadyExists) {
+        // Add new setting with default values
+        existingSettings.push({
+          id: nanoid(),
+          url: tab.url,
+          matchType: 'exact',
+          matchPattern: '',
+        });
+      }
+    }
+
+    await pinnedUrlSettingsStorage.setValue(existingSettings);
+  } catch (error) {
+    console.error('Failed to add pinned tabs to settings:', error);
+    await browser.notifications.create({
+      type: 'basic',
+      title: 'Error Saving Pinned Tabs',
+      message: `Failed to save pinned tabs: ${error instanceof Error ? error.message : String(error)}`,
+    });
+  }
+};

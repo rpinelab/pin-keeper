@@ -1,7 +1,9 @@
 import { useActionState, useEffect, useState } from 'react';
 
+import { Button } from '@/components/ui/button';
 import { usePinnedUrlSettings } from '@/hooks/usePinnedUrlSettings';
 
+import { addCurrentPinnedTabsToStorage } from './actions/addCurrentPinnedTabs';
 import { deleteUrlFromStorage } from './actions/deleteUrl';
 import { editUrlInStorage } from './actions/editUrl';
 import { EditPinnedUrlForm } from './components/EditPinnedUrlForm';
@@ -33,6 +35,17 @@ function App() {
     }
   }, [deleteUrlState]);
 
+  const [addCurrentTabsState, addCurrentTabs] = useActionState(
+    addCurrentPinnedTabsToStorage,
+    null,
+  );
+
+  useEffect(() => {
+    if (addCurrentTabsState?.success === false && addCurrentTabsState.error) {
+      window.alert(addCurrentTabsState.error.message);
+    }
+  }, [addCurrentTabsState]);
+
   return (
     <main className='flex flex-col gap-2 bg-background min-h-screen p-4 min-w-[600px]'>
       <header className='border-b border-foreground'>
@@ -42,6 +55,11 @@ function App() {
       </header>
       <h2 className='text-xl'>Pinned URLs</h2>
       <EditPinnedUrlForm action={editUrl} submitText='Add' />
+      <div className='flex justify-end'>
+        <Button type='button' variant='secondary' onClick={addCurrentTabs}>
+          Add Current Pinned Tabs
+        </Button>
+      </div>
       <section className='flex flex-col gap-2 mt-4'>
         <ul className='flex flex-col gap-2'>
           {pinnedUrlSettings.length === 0 && (
