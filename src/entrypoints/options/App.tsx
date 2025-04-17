@@ -1,3 +1,8 @@
+import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core';
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import { useActionState, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -6,8 +11,9 @@ import { usePinnedUrlSettings } from '@/hooks/usePinnedUrlSettings';
 import { addCurrentPinnedTabsToStorage } from './actions/addCurrentPinnedTabs';
 import { deleteUrlFromStorage } from './actions/deleteUrl';
 import { editUrlInStorage } from './actions/editUrl';
+import { swapUrlInStorage } from './actions/swapUrl';
 import { EditPinnedUrlForm } from './components/EditPinnedUrlForm';
-import { PinnedUrlItem } from './components/PinnedUrlItem';
+import { SortablePinnedUrlItem } from './components/SortablePinnedUrlItem';
 
 function App() {
   const [pinnedUrlSettings] = usePinnedUrlSettings();
@@ -46,6 +52,13 @@ function App() {
     }
   }, [addCurrentTabsState]);
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over !== null && active.id !== over.id) {
+      void swapUrlInStorage(active.id as string, over.id as string);
+    }
+  };
+
   return (
     <main className='flex flex-col gap-2 bg-background min-h-screen p-4 min-w-[600px]'>
       <header className='border-b border-foreground'>
@@ -61,31 +74,41 @@ function App() {
         </Button>
       </div>
       <section className='flex flex-col gap-2 mt-4'>
-        <ul className='flex flex-col gap-2'>
-          {pinnedUrlSettings.length === 0 && (
-            <li className='text-muted-foreground'>No pinned URLs</li>
-          )}
-          {pinnedUrlSettings.map((pinnedUrl) => (
-            <li key={pinnedUrl.id}>
-              {editingId === pinnedUrl.id ? (
-                <EditPinnedUrlForm
-                  cancelEdit={() => {
-                    setEditingId(null);
-                  }}
-                  action={editUrl}
-                  initialValue={pinnedUrl}
-                  submitText='Save'
-                />
-              ) : (
-                <PinnedUrlItem
-                  editUrl={setEditingId}
-                  deleteUrl={deleteUrl}
-                  pinnedUrl={pinnedUrl}
-                />
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={pinnedUrlSettings}
+            strategy={verticalListSortingStrategy}
+          >
+            <ul className='flex flex-col gap-2'>
+              {pinnedUrlSettings.length === 0 && (
+                <li className='text-muted-foreground'>No pinned URLs</li>
               )}
-            </li>
-          ))}
-        </ul>
+              {pinnedUrlSettings.map((pinnedUrl) => (
+                <li key={pinnedUrl.id}>
+                  {editingId === pinnedUrl.id ? (
+                    <EditPinnedUrlForm
+                      cancelEdit={() => {
+                        setEditingId(null);
+                      }}
+                      action={editUrl}
+                      initialValue={pinnedUrl}
+                      submitText='Save'
+                    />
+                  ) : (
+                    <SortablePinnedUrlItem
+                      pinnedUrl={pinnedUrl}
+                      editUrl={setEditingId}
+                      deleteUrl={deleteUrl}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </SortableContext>
+        </DndContext>
       </section>
     </main>
   );
