@@ -16,15 +16,25 @@ export function PinnedUrlItem({
 }: PinnedUrlItemProps) {
   return (
     <div className='flex items-center gap-2 bg-secondary text-secondary-foreground p-2 rounded'>
-      <span className='text-sm grow'>{pinnedUrl.url}</span>
-      <span className='text-sm text-muted-foreground'>
-        {urlMatchTypeLabels[pinnedUrl.matchType]}
-      </span>
-      {pinnedUrl.matchPattern && (
-        <span className='text-sm text-muted-foreground italic'>
-          {pinnedUrl.matchPattern}
+      <div className='flex items-center gap-2 grow min-w-0'>
+        <span
+          className='text-sm grow break-all line-clamp-2'
+          title={pinnedUrl.url}
+        >
+          {pinnedUrl.url}
         </span>
-      )}
+        <span className='text-sm text-muted-foreground'>
+          {urlMatchTypeLabels[pinnedUrl.matchType]}
+        </span>
+        {pinnedUrl.matchPattern && (
+          <span
+            className='text-sm text-muted-foreground italic break-all line-clamp-2'
+            title={pinnedUrl.matchPattern}
+          >
+            {pinnedUrl.matchPattern}
+          </span>
+        )}
+      </div>
       <Button
         type='button'
         variant='default'
