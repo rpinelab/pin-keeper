@@ -19,3 +19,7 @@ PinKeeper is a browser extension that helps you maintain consistent pinned tabs 
 - Browser Extension Framework: [WXT](https://wxt.dev/)
 - Frontend Framework: [React](https://react.dev/)
 - UI Components: [@shadcn/ui](https://ui.shadcn.com/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

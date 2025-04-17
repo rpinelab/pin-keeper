@@ -1,6 +1,7 @@
 {
   "name": "pin-keeper",
   "description": "Automatically manage and restore pinned tabs with flexible URL matching rules",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "type": "module",
