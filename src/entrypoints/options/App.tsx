@@ -6,8 +6,10 @@ import {
 import { useActionState, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { useAutoRestoreDelay } from '@/hooks/useAutoRestoreDelay';
 import { useAutoRestoreEnabled } from '@/hooks/useAutoRestoreEnabled';
 import { usePinnedUrlSettings } from '@/hooks/usePinnedUrlSettings';
 
@@ -23,9 +25,19 @@ function App() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [autoRestoreEnabled, updateAutoRestoreEnabled] =
     useAutoRestoreEnabled();
+  const [autoRestoreDelay, updateAutoRestoreDelay] = useAutoRestoreDelay();
 
   const onToggleAutoRestoreEnabled = (value: boolean) => {
     updateAutoRestoreEnabled(value);
+  };
+
+  const onChangeAutoRestoreDelay = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value)) {
+      updateAutoRestoreDelay(value);
+    }
   };
 
   const [editUrlState, editUrl] = useActionState(editUrlInStorage, null);
@@ -129,6 +141,19 @@ function App() {
           </SortableContext>
         </DndContext>
       </section>
+      <div className='flex items-center'>
+        <Label htmlFor='auto-restore-delay'>Startup Auto-Restore Delay</Label>
+        <Input
+          id='auto-restore-delay'
+          type='number'
+          value={autoRestoreDelay}
+          onChange={onChangeAutoRestoreDelay}
+          className='border rounded ml-4 mr-1 px-2 py-1 w-24'
+          min={0}
+          max={10000}
+        />
+        <span>ms</span>
+      </div>
     </main>
   );
 }
