@@ -1,4 +1,11 @@
-import { DndContext, DragEndEvent, closestCenter } from '@dnd-kit/core';
+import {
+  DndContext,
+  DragEndEvent,
+  PointerSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -26,6 +33,9 @@ function App() {
   const [autoRestoreEnabled, updateAutoRestoreEnabled] =
     useAutoRestoreEnabled();
   const [autoRestoreDelay, updateAutoRestoreDelay] = useAutoRestoreDelay();
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+  );
 
   const onToggleAutoRestoreEnabled = (value: boolean) => {
     updateAutoRestoreEnabled(value);
@@ -106,6 +116,7 @@ function App() {
       </div>
       <section className='flex flex-col gap-2 mt-4'>
         <DndContext
+          sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
         >
