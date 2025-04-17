@@ -38,3 +38,11 @@ export const startupDelayStorage = storage.defineItem<number>(
     fallback: 100,
   },
 );
+
+export const autoRestoreEnabledStorage = storage.defineItem<boolean>(
+  'local:autoRestoreEnabled',
+  {
+    version: 1,
+    fallback: true,
+  },
+);

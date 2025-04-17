@@ -1,7 +1,10 @@
 import { browser } from 'wxt/browser';
 import { defineBackground } from 'wxt/sandbox';
 
-import { startupDelayStorage } from '@/utils/storage';
+import {
+  autoRestoreEnabledStorage,
+  startupDelayStorage,
+} from '@/utils/storage';
 import { restorePinnedTabs } from '@/utils/tabManager';
 
 export default defineBackground(() => {
@@ -14,6 +17,11 @@ export default defineBackground(() => {
   // Run on startup
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   browser.runtime.onStartup.addListener(async () => {
+    const autoRestoreEnabled = await autoRestoreEnabledStorage.getValue();
+    if (!autoRestoreEnabled) {
+      return;
+    }
+
     const delay = await startupDelayStorage.getValue();
     setTimeout(() => {
       void restorePinnedTabs();
