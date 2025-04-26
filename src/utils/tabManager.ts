@@ -44,9 +44,9 @@ export const restorePinnedTabs = async () => {
   }
 };
 
-function createTabUrlMatcher(
-  pinnedUrlConfig: PinnedUrlSetting,
-): (tab: Tabs.Tab) => boolean {
+export function createTabUrlMatcher(
+  pinnedUrlConfig: Omit<PinnedUrlSetting, 'id'>,
+): (tab: Tabs.Tab | { url: string }) => boolean {
   switch (pinnedUrlConfig.matchType) {
     case 'exact': {
       return (tab) =>
@@ -66,7 +66,7 @@ function createTabUrlMatcher(
         return (tab) => urlPatternRegex.test(tab.url ?? '');
       } catch (error) {
         throw new Error(
-          `Invalid regex pattern: ${pinnedUrlConfig.matchPattern}`,
+          `Invalid regex pattern: ${pinnedUrlConfig.matchPattern || pinnedUrlConfig.url}`,
           { cause: error },
         );
       }
