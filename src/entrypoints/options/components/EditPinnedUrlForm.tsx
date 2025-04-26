@@ -4,6 +4,7 @@ import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectTrigger,
@@ -61,10 +62,7 @@ export function EditPinnedUrlForm({
   }, [url, matchType, matchPattern, testUrl]);
 
   return (
-    <form
-      className='grid grid-cols-[auto_1fr_auto] gap-3 border p-2'
-      action={addUrl}
-    >
+    <form className='flex flex-col border p-2 gap-3' action={addUrl}>
       {initialValue && (
         <input type='hidden' name='id' value={initialValue.id} />
       )}
@@ -76,37 +74,36 @@ export function EditPinnedUrlForm({
           setUrl(e.target.value);
         }}
         placeholder='URL to pin'
-        className='col-span-3'
       />
-      <Select
-        value={matchType}
-        onValueChange={(value) => {
-          setMatchType(value as UrlMatchType);
-        }}
-        name='matchType'
-      >
-        <SelectTrigger className='w-36 min-w-fit'>
-          <SelectValue placeholder='Match Strategy' />
-        </SelectTrigger>
-        <SelectContent>
-          {urlMatchTypes.map((matchType) => (
-            <SelectItem key={matchType.value} value={matchType.value}>
-              {matchType.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-      <Input
-        name='matchPattern'
-        type='text'
-        value={matchPattern}
-        onChange={(e) => {
-          setMatchPattern(e.target.value);
-        }}
-        placeholder='Match pattern (defaults to URL if left empty)'
-        className='flex-grow'
-      />
-      <div className='flex justify-end gap-2'>
+      <div className='grid grid-cols-[auto_1fr_auto] gap-2'>
+        <Select
+          value={matchType}
+          onValueChange={(value) => {
+            setMatchType(value as UrlMatchType);
+          }}
+          name='matchType'
+        >
+          <SelectTrigger className='w-36 min-w-fit'>
+            <SelectValue placeholder='Match Strategy' />
+          </SelectTrigger>
+          <SelectContent>
+            {urlMatchTypes.map((matchType) => (
+              <SelectItem key={matchType.value} value={matchType.value}>
+                {matchType.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Input
+          name='matchPattern'
+          type='text'
+          value={matchPattern}
+          onChange={(e) => {
+            setMatchPattern(e.target.value);
+          }}
+          placeholder='Match pattern (defaults to URL if left empty)'
+          className='flex-grow'
+        />
         <Button
           type='button'
           variant='outline'
@@ -117,18 +114,12 @@ export function EditPinnedUrlForm({
           <TestTubeDiagonal className='h-4 w-4' />
           {isTestSectionVisible ? 'Hide Test' : 'Test Pattern'}
         </Button>
-        <SubmitButton submitText={submitText} />
-        {cancelEdit && (
-          <Button type='button' variant='outline' onClick={cancelEdit}>
-            <X className='h-4 w-4' />
-            Cancel
-          </Button>
-        )}
       </div>
       {isTestSectionVisible && (
-        <div className='col-span-3 mt-4'>
+        <div className='grid gap-1 p-2'>
+          <Label htmlFor='testUrl'>Test URL Pattern</Label>
           <Input
-            name='testUrl'
+            id='testUrl'
             type='text'
             value={testUrl}
             onChange={(e) => {
@@ -137,9 +128,18 @@ export function EditPinnedUrlForm({
             placeholder='Enter a URL to test'
             className='w-full'
           />
-          {testResult && <p className='mt-2 text-sm'>{testResult}</p>}
+          {testResult && <p className='text-sm'>{testResult}</p>}
         </div>
       )}
+      <div className='flex justify-end gap-2'>
+        <SubmitButton submitText={submitText} />
+        {cancelEdit && (
+          <Button type='button' variant='outline' onClick={cancelEdit}>
+            <X className='h-4 w-4' />
+            Cancel
+          </Button>
+        )}
+      </div>
     </form>
   );
 }
