@@ -1,18 +1,18 @@
 # PinKeeper
 
-> Automatically manage and restore pinned tabs with flexible URL matching rules
+> Automatically manage and restore pinned tabs with flexible URL matching rules.
 
 ![PinKeeper Icon](src/assets/icon.png)
 
-PinKeeper is a browser extension that helps you maintain consistent pinned tabs across browsing sessions.
+PinKeeper is a browser extension designed to help you maintain consistent pinned tabs across browsing sessions.
 
 ## Features
 
-- Automatically restore pinned tabs when the browser is restarted.
+- Automatically restore pinned tabs when the browser restarts.
 - Flexible URL matching rules to determine which tabs should be restored.
-- Customizable tab order via drag-and-drop.
+- Customizable tab order via drag-and-drop functionality.
 - Pattern testing to ensure your rules work as expected.
-- Customizable startup delay (default: 100 ms).
+- Adjustable startup delay (default: 100 ms).
 
 ## Technology Stack
 
@@ -48,4 +48,4 @@ pnpm run zip # For Firefox: pnpm run zip:firefox
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
