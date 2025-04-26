@@ -1,5 +1,5 @@
 import { Plus, Save, X, TestTubeDiagonal } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/components/ui/button';
@@ -36,10 +36,8 @@ export function EditPinnedUrlForm({
   const [testResult, setTestResult] = useState<string | null>(null);
   const [isTestSectionVisible, setIsTestSectionVisible] = useState(false);
 
-  const handleTestUrlChange = (value: string) => {
-    setTestUrl(value);
-
-    if (!value) {
+  useEffect(() => {
+    if (!testUrl) {
       setTestResult(null);
       return;
     }
@@ -51,7 +49,7 @@ export function EditPinnedUrlForm({
         matchPattern,
       });
 
-      const isMatch = matcher({ url: value });
+      const isMatch = matcher({ url: testUrl });
       setTestResult(
         isMatch
           ? 'The URL matches the pattern.'
@@ -60,7 +58,7 @@ export function EditPinnedUrlForm({
     } catch (error) {
       setTestResult(`Error: ${(error as Error).message}`);
     }
-  };
+  }, [url, matchType, matchPattern, testUrl]);
 
   return (
     <form
@@ -134,7 +132,7 @@ export function EditPinnedUrlForm({
             type='text'
             value={testUrl}
             onChange={(e) => {
-              handleTestUrlChange(e.target.value);
+              setTestUrl(e.target.value);
             }}
             placeholder='Enter a URL to test'
             className='w-full'
