@@ -15,3 +15,4 @@ Extension's setting page is located at `src/entrypoints/options/App.tsx`.
 Manage extension's settings using `wxt/storage` API, place all settings in `src\utils\storage.ts`.
 
 Never use `any` type and always use explicit types.
+Prefer ?? over || for nullish coalescing.
