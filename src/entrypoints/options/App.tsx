@@ -104,7 +104,7 @@ function App() {
           onCheckedChange={onToggleAutoRestoreEnabled}
         />
         <Label htmlFor='auto-restore-toggle'>
-          Enable Auto-Restore Pinned URLs on Browser Startup
+          Enable Auto-Restore of Pinned Tabs on Browser Startup
         </Label>
       </div>
       <h2 className='text-xl'>Pinned URLs</h2>
