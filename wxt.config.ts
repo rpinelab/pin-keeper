@@ -11,7 +11,7 @@ export default defineConfig({
   extensionApi: 'chrome',
   srcDir: 'src',
   imports: false,
-  modules: ['@wxt-dev/module-react'],
+  modules: ['@wxt-dev/auto-icons', '@wxt-dev/module-react'],
   vite: () => ({
     plugins: [tailwindcss()],
   }),

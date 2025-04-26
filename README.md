@@ -2,6 +2,8 @@
 
 > Automatically manage and restore pinned tabs with flexible URL matching rules
 
+![PinKeeper Icon](src/assets/icon.png)
+
 PinKeeper is a browser extension that helps you maintain consistent pinned tabs across browsing sessions.
 
 ## Features
