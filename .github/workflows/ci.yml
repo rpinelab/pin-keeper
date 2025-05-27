@@ -23,8 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm if ACT is used
-        if: ${{ env.ACT }}
+      - name: Setup pnpm
         run: |
           npm install -g corepack
           corepack enable
@@ -34,9 +33,6 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
