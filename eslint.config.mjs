@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import vitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
@@ -84,6 +85,16 @@ export default tseslint.config(
           'newlines-between': 'always',
         },
       ],
+    },
+  },
+  {
+    files: ['**/*.test.{js,ts,jsx,tsx}'],
+    extends: [vitest.configs.recommended],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/unbound-method': 'off',
     },
   },
   eslintConfigPrettier,
