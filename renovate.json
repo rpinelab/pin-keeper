@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "schedule:weekends",
+    ":automergeMinor",
+    ":timezone(Asia/Tokyo)",
+    ":semanticPrefixFix",
+    ":enableVulnerabilityAlerts",
+    ":enablePreCommit"
+  ],
+  "prHourlyLimit": 0,
+  "commitBody": "[CI Skip]",
+  "gitIgnoredAuthors": [
+    "41898282+github-actions[bot]@users.noreply.github.com"
+  ],
+  "packageRules": []
+}
