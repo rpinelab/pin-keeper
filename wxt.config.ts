@@ -8,7 +8,6 @@ export default defineConfig({
     permissions: ['notifications', 'storage', 'tabs'],
     action: {},
   },
-  extensionApi: 'chrome',
   srcDir: 'src',
   imports: false,
   modules: ['@wxt-dev/auto-icons', '@wxt-dev/module-react'],

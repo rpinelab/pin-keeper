@@ -64,7 +64,7 @@
     "typescript-eslint": "8.33.1",
     "vite": "6.3.5",
     "vitest": "3.2.2",
-    "wxt": "0.19.29"
+    "wxt": "0.20.7"
   },
   "packageManager": "pnpm@10.11.1",
   "pnpm": {
