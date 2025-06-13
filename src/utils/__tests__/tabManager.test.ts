@@ -60,6 +60,7 @@ describe('createTabUrlMatcher', () => {
 
 describe('restorePinnedTabs', () => {
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     fakeBrowser.reset();
     vi.spyOn(browser.tabs, 'create');
     vi.spyOn(browser.tabs, 'query');
@@ -251,6 +252,7 @@ describe('restorePinnedTabs', () => {
 
 describe('addCurrentPinnedTabsToSettings', () => {
   beforeEach(async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     fakeBrowser.reset();
     await pinnedUrlSettingsStorage.setValue([]);
     vi.spyOn(browser.tabs, 'query');
