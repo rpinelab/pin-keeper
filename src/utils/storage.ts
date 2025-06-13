@@ -1,4 +1,4 @@
-import { storage } from 'wxt/storage';
+import { storage } from 'wxt/utils/storage';
 
 const allUrlMatchTypes = ['exact', 'startsWith', 'regex'] as const;
 

@@ -75,6 +75,12 @@ describe('restorePinnedTabs', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
 
@@ -105,6 +111,12 @@ describe('restorePinnedTabs', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
       {
         url: 'https://example2.com/test',
@@ -113,6 +125,12 @@ describe('restorePinnedTabs', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
 
@@ -145,6 +163,12 @@ describe('restorePinnedTabs', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
       {
         url: 'https://example2.com',
@@ -153,6 +177,12 @@ describe('restorePinnedTabs', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
 
@@ -235,6 +265,12 @@ describe('addCurrentPinnedTabsToSettings', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
 
@@ -259,6 +295,12 @@ describe('addCurrentPinnedTabsToSettings', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
     await pinnedUrlSettingsStorage.setValue([
@@ -285,6 +327,12 @@ describe('addCurrentPinnedTabsToSettings', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
 
@@ -302,6 +350,12 @@ describe('addCurrentPinnedTabsToSettings', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
       {
         url: 'https://tab2.com',
@@ -310,6 +364,12 @@ describe('addCurrentPinnedTabsToSettings', () => {
         highlighted: false,
         active: false,
         incognito: false,
+        windowId: 0,
+        frozen: false,
+        selected: false,
+        discarded: false,
+        autoDiscardable: false,
+        groupId: 0,
       },
     ]);
     await pinnedUrlSettingsStorage.setValue([

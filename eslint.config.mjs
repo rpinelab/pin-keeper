@@ -18,7 +18,9 @@ export default tseslint.config(
     },
     settings: {
       'import/resolver': {
-        typescript: true,
+        typescript: {
+          alwaysTryTypes: true,
+        },
       },
     },
   },
@@ -80,6 +82,13 @@ export default tseslint.config(
             'index',
             'object',
             'type',
+          ],
+          pathGroups: [
+            {
+              pattern: '#imports',
+              group: 'external',
+              position: 'before',
+            },
           ],
           alphabetize: { order: 'asc' },
           'newlines-between': 'always',

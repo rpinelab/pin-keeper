@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { WxtStorageItem } from 'wxt/storage';
+import { WxtStorageItem } from 'wxt/utils/storage';
 
 export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
   storage: WxtStorageItem<TValue, TMetadata>,

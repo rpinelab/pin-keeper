@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { browser, Tabs } from 'wxt/browser';
+import { Browser, browser } from 'wxt/browser';
 
 import { PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
@@ -14,6 +14,7 @@ export const restorePinnedTabs = async () => {
       type: 'basic',
       title: 'No pinned URLs configured',
       message: 'Please configure pinned URLs in the extension settings',
+      iconUrl: 'icon.png',
     });
     return;
   }
@@ -39,6 +40,7 @@ export const restorePinnedTabs = async () => {
         type: 'basic',
         title: 'Failed to process pinned URL',
         message: `Failed to process pinned URL: ${error instanceof Error ? error.message : String(error)}`,
+        iconUrl: 'icon.png',
       });
     }
   }
@@ -46,7 +48,7 @@ export const restorePinnedTabs = async () => {
 
 export function createTabUrlMatcher(
   pinnedUrlConfig: Omit<PinnedUrlSetting, 'id'>,
-): (tab: Tabs.Tab | { url: string }) => boolean {
+): (tab: Browser.tabs.Tab | { url: string }) => boolean {
   switch (pinnedUrlConfig.matchType) {
     case 'exact': {
       return (tab) =>
@@ -114,6 +116,7 @@ export const addCurrentPinnedTabsToSettings = async () => {
       type: 'basic',
       title: 'Error Saving Pinned Tabs',
       message: `Failed to save pinned tabs: ${error instanceof Error ? error.message : String(error)}`,
+      iconUrl: 'icon.png',
     });
   }
 };
