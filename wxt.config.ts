@@ -7,6 +7,11 @@ export default defineConfig({
     name: 'Pin Keeper - Smart Pinned Tab Manager',
     permissions: ['notifications', 'storage', 'tabs'],
     action: {},
+    browser_specific_settings: {
+      gecko: {
+        id: '{d01a0cea-aa5d-4147-8536-d1b1e23766ba}',
+      },
+    },
   },
   srcDir: 'src',
   imports: false,
