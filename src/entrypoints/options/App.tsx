@@ -97,16 +97,34 @@ function App() {
           PinKeeper Option
         </h1>
       </header>
-      <div className='flex items-center space-x-2'>
-        <Switch
-          id='auto-restore-toggle'
-          checked={autoRestoreEnabled}
-          onCheckedChange={onToggleAutoRestoreEnabled}
-        />
-        <Label htmlFor='auto-restore-toggle'>
-          Enable Auto-Restore of Pinned Tabs on Browser Startup
-        </Label>
-      </div>
+      <section className='flex flex-col gap-4 border border-gray-200 rounded-lg p-4'>
+        <h2 className='text-xl font-semibold'>Auto-Restore Settings</h2>
+        <div className='flex items-center space-x-2'>
+          <Switch
+            id='auto-restore-toggle'
+            checked={autoRestoreEnabled}
+            onCheckedChange={onToggleAutoRestoreEnabled}
+          />
+          <Label htmlFor='auto-restore-toggle'>
+            Automatically restore pinned tabs when browser starts
+          </Label>
+        </div>
+        <div className='flex items-center'>
+          <Label htmlFor='auto-restore-delay'>
+            Delay before restoring tabs
+          </Label>
+          <Input
+            id='auto-restore-delay'
+            type='number'
+            value={autoRestoreDelay}
+            onChange={onChangeAutoRestoreDelay}
+            className='border rounded ml-4 mr-1 px-2 py-1 w-24'
+            min={0}
+            max={10000}
+          />
+          <span>ms</span>
+        </div>
+      </section>
       <h2 className='text-xl'>Pinned URLs</h2>
       <EditPinnedUrlForm action={editUrl} submitText='Add' />
       <div className='flex justify-end'>
@@ -152,19 +170,6 @@ function App() {
           </SortableContext>
         </DndContext>
       </section>
-      <div className='flex items-center'>
-        <Label htmlFor='auto-restore-delay'>Startup Auto-Restore Delay</Label>
-        <Input
-          id='auto-restore-delay'
-          type='number'
-          value={autoRestoreDelay}
-          onChange={onChangeAutoRestoreDelay}
-          className='border rounded ml-4 mr-1 px-2 py-1 w-24'
-          min={0}
-          max={10000}
-        />
-        <span>ms</span>
-      </div>
     </main>
   );
 }
