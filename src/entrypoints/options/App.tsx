@@ -92,9 +92,9 @@ function App() {
 
   return (
     <main className='flex flex-col gap-4 bg-background min-h-screen p-4 min-w-[600px]'>
-      <header className='border-b border-foreground'>
-        <h1 className='text-3xl font-bold border-b border-foreground pb-1'>
-          PinKeeper Option
+      <header>
+        <h1 className='text-3xl font-bold border-b border-foreground pb-2'>
+          PinKeeper Options
         </h1>
       </header>
       <section className='flex flex-col gap-4 border border-gray-200 rounded-lg p-4'>
@@ -109,8 +109,8 @@ function App() {
             Automatically restore pinned tabs when browser starts
           </Label>
         </div>
-        <div className='flex items-center'>
-          <Label htmlFor='auto-restore-delay'>
+        <div className='flex items-center gap-2'>
+          <Label htmlFor='auto-restore-delay' className='min-w-fit'>
             Delay before restoring tabs
           </Label>
           <Input
@@ -118,21 +118,21 @@ function App() {
             type='number'
             value={autoRestoreDelay}
             onChange={onChangeAutoRestoreDelay}
-            className='border rounded ml-4 mr-1 px-2 py-1 w-24'
+            className='w-24'
             min={0}
             max={10000}
           />
-          <span>ms</span>
+          <span className='text-sm text-muted-foreground'>ms</span>
         </div>
       </section>
-      <h2 className='text-xl'>Pinned URLs</h2>
-      <EditPinnedUrlForm action={editUrl} submitText='Add' />
-      <div className='flex justify-end'>
-        <Button type='button' variant='secondary' onClick={addCurrentTabs}>
-          Add Current Pinned Tabs
-        </Button>
-      </div>
-      <section className='flex flex-col gap-2 mt-4'>
+      <section className='flex flex-col gap-4 border border-gray-200 rounded-lg p-4'>
+        <div className='flex items-center justify-between'>
+          <h2 className='text-xl font-semibold'>Pinned URLs</h2>
+          <Button type='button' variant='secondary' onClick={addCurrentTabs}>
+            Add Current Pinned Tabs
+          </Button>
+        </div>
+        <EditPinnedUrlForm action={editUrl} submitText='Add' />
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
