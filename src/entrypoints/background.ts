@@ -10,31 +10,42 @@ import { restorePinnedTabs } from '@/utils/tabManager';
 export default defineBackground(() => {
   // Run on extension button click
   (browser.action ?? browser.browserAction).onClicked.addListener(() => {
-    console.log('Pin Keeper: Extension button clicked');
     void (async () => {
-      await restorePinnedTabs();
+      try {
+        await restorePinnedTabs();
+      } catch (error) {
+        console.error('Pin Keeper: Manual tab restoration failed:', error);
+      }
     })();
   });
 
   // Run on startup
   browser.runtime.onStartup.addListener(() => {
-    console.log('Pin Keeper: onStartup event triggered');
     void (async () => {
-      const autoRestoreEnabled = await autoRestoreEnabledStorage.getValue();
-      if (!autoRestoreEnabled) {
-        console.log('Pin Keeper: Auto restore is disabled, skipping restore');
-        return;
+      try {
+        const autoRestoreEnabled = await autoRestoreEnabledStorage.getValue();
+
+        if (!autoRestoreEnabled) {
+          return;
+        }
+
+        const delay = await startupDelayStorage.getValue();
+
+        setTimeout(() => {
+          void (async () => {
+            try {
+              await restorePinnedTabs();
+            } catch (error) {
+              console.error(
+                'Pin Keeper: Startup tab restoration failed:',
+                error,
+              );
+            }
+          })();
+        }, delay);
+      } catch (error) {
+        console.error('Pin Keeper: Error in startup handler:', error);
       }
-
-      console.log('Pin Keeper: Auto restore is enabled, restoring pinned tabs');
-
-      const delay = await startupDelayStorage.getValue();
-      setTimeout(() => {
-        console.log(
-          `Pin Keeper: Restoring pinned tabs after ${delay.toString()}ms delay`,
-        );
-        void restorePinnedTabs();
-      }, delay);
     })();
   });
 });
