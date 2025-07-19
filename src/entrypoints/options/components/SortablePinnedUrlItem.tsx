@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-import { PinnedUrlSetting } from '@/utils/storage';
+import type { PinnedUrlSetting } from '@/utils/storage';
 
 import { PinnedUrlItem } from './PinnedUrlItem';
 

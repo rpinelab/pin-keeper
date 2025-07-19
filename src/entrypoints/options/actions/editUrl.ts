@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
 
 import {
-  pinnedUrlSettingsStorage,
   type PinnedUrlSetting,
+  pinnedUrlSettingsStorage,
   type UrlMatchType,
 } from '@/utils/storage';
 

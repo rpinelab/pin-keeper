@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { WxtStorageItem } from 'wxt/utils/storage';
+import type { WxtStorageItem } from 'wxt/utils/storage';
 
 export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
   storage: WxtStorageItem<TValue, TMetadata>,
@@ -10,7 +10,7 @@ export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
     void storage.getValue().then((value) => {
       setStateRaw(value);
     });
-  }, []);
+  }, [storage.getValue]);
 
   useEffect(() => {
     const unwatch = storage.watch((value) => {
@@ -20,11 +20,14 @@ export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
     return () => {
       unwatch();
     };
-  }, []);
+  }, [storage.watch]);
 
-  const setState = useCallback((value: TValue) => {
-    void storage.setValue(value);
-  }, []);
+  const setState = useCallback(
+    (value: TValue) => {
+      void storage.setValue(value);
+    },
+    [storage.setValue],
+  );
 
   return [state, setState] as const;
 }

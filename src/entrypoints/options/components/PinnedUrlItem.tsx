@@ -1,7 +1,7 @@
 import { Edit2, Trash2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { PinnedUrlSetting, urlMatchTypeLabels } from '@/utils/storage';
+import { type PinnedUrlSetting, urlMatchTypeLabels } from '@/utils/storage';
 
 interface PinnedUrlItemProps {
   editUrl: (id: string) => void;

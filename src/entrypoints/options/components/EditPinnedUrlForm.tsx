@@ -1,4 +1,4 @@
-import { Plus, Save, X, TestTubeDiagonal } from 'lucide-react';
+import { Plus, Save, TestTubeDiagonal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -7,12 +7,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui/select';
-import { PinnedUrlSetting, UrlMatchType, urlMatchTypes } from '@/utils/storage';
+import {
+  type PinnedUrlSetting,
+  type UrlMatchType,
+  urlMatchTypes,
+} from '@/utils/storage';
 import { createTabUrlMatcher } from '@/utils/tabManager';
 
 export function EditPinnedUrlForm({
