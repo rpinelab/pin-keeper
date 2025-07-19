@@ -1,6 +1,6 @@
 import {
   DndContext,
-  DragEndEvent,
+  type DragEndEvent,
   PointerSensor,
   closestCenter,
   useSensor,
@@ -44,8 +44,8 @@ function App() {
   const onChangeAutoRestoreDelay = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const value = parseInt(event.target.value, 10);
-    if (!isNaN(value)) {
+    const value = Number.parseInt(event.target.value, 10);
+    if (!Number.isNaN(value)) {
       updateAutoRestoreDelay(value);
     }
   };
