@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 
 import {
-  PinnedUrlSetting,
-  UrlMatchType,
   pinnedUrlSettingsStorage,
+  type PinnedUrlSetting,
+  type UrlMatchType,
 } from '@/utils/storage';
 
 export type AddUrlState =
@@ -15,7 +15,7 @@ export async function editUrlInStorage(
   _prevState: AddUrlState,
   formData: FormData | null,
 ): Promise<AddUrlState> {
-  if (formData == null) {
+  if (formData === null) {
     return null;
   }
 
@@ -24,7 +24,7 @@ export async function editUrlInStorage(
   const matchType = formData.get('matchType') as UrlMatchType;
   const matchPattern = formData.get('matchPattern') as string;
 
-  if (url == '') {
+  if (url === '') {
     return { success: false, error: new Error('URL is required') };
   }
 
@@ -43,12 +43,14 @@ export async function editUrlInStorage(
 
   try {
     const currentSettings = await pinnedUrlSettingsStorage.getValue();
+
     const updatedPinnedUrlSettings =
       id != null
         ? currentSettings.map((pinnedUrl) =>
             pinnedUrl.id === id ? pinnedUrlSetting : pinnedUrl,
           ) // Edit
         : [...currentSettings, pinnedUrlSetting]; // Add
+
     await pinnedUrlSettingsStorage.setValue(updatedPinnedUrlSettings);
 
     return {
