@@ -1,12 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { browser } from 'wxt/browser';
 import { fakeBrowser } from 'wxt/testing';
 
 import { pinnedUrlSettingsStorage } from '../storage';
 import {
+  addCurrentPinnedTabsToSettings,
   createTabUrlMatcher,
   restorePinnedTabs,
-  addCurrentPinnedTabsToSettings,
 } from '../tabManager';
 
 describe('createTabUrlMatcher', () => {
