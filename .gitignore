@@ -26,3 +26,6 @@ web-ext.config.ts
 *.sw?
 
 .eslintcache
+
+.env
+.env.*
