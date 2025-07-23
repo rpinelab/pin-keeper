@@ -7,8 +7,6 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import {
-  restrictToFirstScrollableAncestor,
-  restrictToParentElement,
   restrictToVerticalAxis,
   restrictToWindowEdges,
 } from '@dnd-kit/modifiers';
