@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/rpinelab/pin-keeper/compare/v1.0.0...v1.1.0) (2025-07-23)
+
+
+### Features
+
+* improve drag and drop experience with vertical axis constraints ([#95](https://github.com/rpinelab/pin-keeper/issues/95)) ([3d1dbbe](https://github.com/rpinelab/pin-keeper/commit/3d1dbbecb9d3475c3ddbdce070129078075a15fa))
+
 ## 1.0.0 (2025-07-21)
 
 
