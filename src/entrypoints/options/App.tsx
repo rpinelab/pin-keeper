@@ -7,11 +7,14 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import {
+  restrictToVerticalAxis,
+  restrictToWindowEdges,
+} from '@dnd-kit/modifiers';
+import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { useActionState, useEffect, useState } from 'react';
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,7 +22,6 @@ import { Switch } from '@/components/ui/switch';
 import { useAutoRestoreDelay } from '@/hooks/useAutoRestoreDelay';
 import { useAutoRestoreEnabled } from '@/hooks/useAutoRestoreEnabled';
 import { usePinnedUrlSettings } from '@/hooks/usePinnedUrlSettings';
-
 import { addCurrentPinnedTabsToStorage } from './actions/addCurrentPinnedTabs';
 import { deleteUrlFromStorage } from './actions/deleteUrl';
 import { editUrlInStorage } from './actions/editUrl';
@@ -137,6 +139,7 @@ function App() {
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
+          modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}
         >
           <SortableContext
             items={pinnedUrlSettings}
