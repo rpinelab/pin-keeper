@@ -7,8 +7,8 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import {
+  restrictToParentElement,
   restrictToVerticalAxis,
-  restrictToWindowEdges,
 } from '@dnd-kit/modifiers';
 import {
   SortableContext,
@@ -139,7 +139,7 @@ function App() {
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
-          modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}
+          modifiers={[restrictToVerticalAxis, restrictToParentElement]}
         >
           <SortableContext
             items={pinnedUrlSettings}
@@ -149,9 +149,9 @@ function App() {
               {pinnedUrlSettings.length === 0 && (
                 <li className='text-muted-foreground'>No pinned URLs</li>
               )}
-              {pinnedUrlSettings.map((pinnedUrl) => (
-                <li key={pinnedUrl.id}>
-                  {editingId === pinnedUrl.id ? (
+              {pinnedUrlSettings.map((pinnedUrl) =>
+                editingId === pinnedUrl.id ? (
+                  <li key={pinnedUrl.id}>
                     <EditPinnedUrlForm
                       cancelEdit={() => {
                         setEditingId(null);
@@ -160,15 +160,16 @@ function App() {
                       initialValue={pinnedUrl}
                       submitText='Save'
                     />
-                  ) : (
-                    <SortablePinnedUrlItem
-                      pinnedUrl={pinnedUrl}
-                      editUrl={setEditingId}
-                      deleteUrl={deleteUrl}
-                    />
-                  )}
-                </li>
-              ))}
+                  </li>
+                ) : (
+                  <SortablePinnedUrlItem
+                    key={pinnedUrl.id}
+                    pinnedUrl={pinnedUrl}
+                    editUrl={setEditingId}
+                    deleteUrl={deleteUrl}
+                  />
+                ),
+              )}
             </ul>
           </SortableContext>
         </DndContext>
