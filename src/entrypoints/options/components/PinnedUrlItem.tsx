@@ -15,7 +15,7 @@ export function PinnedUrlItem({
   pinnedUrl,
 }: PinnedUrlItemProps) {
   return (
-    <div className='flex items-center gap-2 bg-secondary text-secondary-foreground p-2 rounded'>
+    <div className='flex items-center gap-2 bg-secondary text-secondary-foreground p-2 rounded select-none'>
       <div className='flex items-center gap-2 grow min-w-0'>
         <span
           className='text-sm grow break-all line-clamp-2'
