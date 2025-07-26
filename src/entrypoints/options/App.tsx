@@ -14,8 +14,14 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
+import { ChevronDown } from 'lucide-react';
 import { useActionState, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -32,6 +38,7 @@ import { SortablePinnedUrlItem } from './components/SortablePinnedUrlItem';
 function App() {
   const [pinnedUrlSettings] = usePinnedUrlSettings();
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [isAddFormExpanded, setIsAddFormExpanded] = useState(false);
   const [autoRestoreEnabled, updateAutoRestoreEnabled] =
     useAutoRestoreEnabled();
   const [autoRestoreDelay, updateAutoRestoreDelay] = useAutoRestoreDelay();
@@ -93,7 +100,7 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col gap-4 bg-background min-h-screen p-4 min-w-[600px]'>
+    <main className='flex flex-col gap-4 bg-background min-h-screen p-4 min-w-[600px] select-none'>
       <header>
         <h1 className='text-3xl font-bold border-b border-foreground pb-2'>
           PinKeeper Options
@@ -134,7 +141,28 @@ function App() {
             Add Current Pinned Tabs
           </Button>
         </div>
-        <EditPinnedUrlForm action={editUrl} submitText='Add' />
+        <Collapsible
+          open={isAddFormExpanded}
+          onOpenChange={setIsAddFormExpanded}
+        >
+          <CollapsibleTrigger asChild>
+            <Button
+              type='button'
+              variant='outline'
+              className='w-full justify-between'
+            >
+              Add New URL
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  isAddFormExpanded ? 'rotate-180' : ''
+                }`}
+              />
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className='mt-2'>
+            <EditPinnedUrlForm action={editUrl} submitText='Add' />
+          </CollapsibleContent>
+        </Collapsible>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
