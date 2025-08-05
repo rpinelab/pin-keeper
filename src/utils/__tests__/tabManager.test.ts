@@ -83,6 +83,7 @@ describe('restorePinnedTabs', () => {
         groupId: 0,
       },
     ]);
+    vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
 
     await pinnedUrlSettingsStorage.setValue([
       {
@@ -185,6 +186,7 @@ describe('restorePinnedTabs', () => {
         groupId: 0,
       },
     ]);
+    vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
 
     await pinnedUrlSettingsStorage.setValue([
       {
