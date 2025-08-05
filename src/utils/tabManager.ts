@@ -19,33 +19,19 @@ export const restorePinnedTabs = async () => {
   }
 
   for (const pinnedUrlConfig of pinnedUrlConfigs) {
-    try {
-      const tabMatcher = createTabUrlMatcher(pinnedUrlConfig);
+    const tabMatcher = createTabUrlMatcher(pinnedUrlConfig);
 
-      const tabExists = pinnedTabs.some(tabMatcher);
-      if (tabExists) {
-        continue;
-      }
-
-      // Open a new tab and pin it
-      await browser.tabs.create({
-        url: pinnedUrlConfig.url,
-        pinned: true,
-        active: false,
-      });
-    } catch (error) {
-      console.error(
-        'Failed to process pinned URL config:',
-        pinnedUrlConfig.url,
-        error,
-      );
-      await browser.notifications.create({
-        type: 'basic',
-        title: 'Failed to process pinned URL',
-        message: `Failed to process pinned URL: ${error instanceof Error ? error.message : String(error)}`,
-        iconUrl: 'icon.png',
-      });
+    const tabExists = pinnedTabs.some(tabMatcher);
+    if (tabExists) {
+      continue;
     }
+
+    // Open a new tab and pin it
+    await browser.tabs.create({
+      url: pinnedUrlConfig.url,
+      pinned: true,
+      active: false,
+    });
   }
 };
 
@@ -83,45 +69,35 @@ export function createTabUrlMatcher(
 
 // Add current pinned tabs to settings
 export const addCurrentPinnedTabsToSettings = async () => {
-  try {
-    const currentPinnedTabs = await browser.tabs.query({ pinned: true });
+  const currentPinnedTabs = await browser.tabs.query({ pinned: true });
 
-    if (currentPinnedTabs.length === 0) {
-      return;
-    }
-
-    const existingSettings = await pinnedUrlSettingsStorage.getValue();
-
-    // Process each pinned tab
-    for (const tab of currentPinnedTabs) {
-      if (!tab.url) {
-        continue;
-      }
-
-      // Check if this URL is already in settings
-      const alreadyExists = existingSettings.some((setting) =>
-        createTabUrlMatcher(setting)(tab),
-      );
-
-      if (!alreadyExists) {
-        // Add new setting with default values
-        existingSettings.push({
-          id: nanoid(),
-          url: tab.url,
-          matchType: 'exact',
-          matchPattern: '',
-        });
-      }
-    }
-
-    await pinnedUrlSettingsStorage.setValue(existingSettings);
-  } catch (error) {
-    console.error('Failed to add pinned tabs to settings:', error);
-    await browser.notifications.create({
-      type: 'basic',
-      title: 'Error Saving Pinned Tabs',
-      message: `Failed to save pinned tabs: ${error instanceof Error ? error.message : String(error)}`,
-      iconUrl: 'icon.png',
-    });
+  if (currentPinnedTabs.length === 0) {
+    return;
   }
+
+  const existingSettings = await pinnedUrlSettingsStorage.getValue();
+
+  // Process each pinned tab
+  for (const tab of currentPinnedTabs) {
+    if (!tab.url) {
+      continue;
+    }
+
+    // Check if this URL is already in settings
+    const alreadyExists = existingSettings.some((setting) =>
+      createTabUrlMatcher(setting)(tab),
+    );
+
+    if (!alreadyExists) {
+      // Add new setting with default values
+      existingSettings.push({
+        id: nanoid(),
+        url: tab.url,
+        matchType: 'exact',
+        matchPattern: '',
+      });
+    }
+  }
+
+  await pinnedUrlSettingsStorage.setValue(existingSettings);
 };

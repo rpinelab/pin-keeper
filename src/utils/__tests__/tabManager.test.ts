@@ -64,7 +64,6 @@ describe('restorePinnedTabs', () => {
     fakeBrowser.reset();
     vi.spyOn(browser.tabs, 'create');
     vi.spyOn(browser.tabs, 'query');
-    vi.spyOn(browser.notifications, 'create');
   });
 
   it('should create new pinned tabs for missing URL', async () => {
@@ -84,6 +83,7 @@ describe('restorePinnedTabs', () => {
         groupId: 0,
       },
     ]);
+    vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
 
     await pinnedUrlSettingsStorage.setValue([
       {
@@ -186,6 +186,7 @@ describe('restorePinnedTabs', () => {
         groupId: 0,
       },
     ]);
+    vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
 
     await pinnedUrlSettingsStorage.setValue([
       {
@@ -217,17 +218,13 @@ describe('restorePinnedTabs', () => {
     });
   });
 
-  it('should notify if no pinned URLs are configured', async () => {
+  it('should handle no pinned URLs configured', async () => {
     await restorePinnedTabs();
 
-    expect(browser.notifications.create).toHaveBeenCalledExactlyOnceWith(
-      expect.objectContaining({
-        title: 'No pinned URLs configured',
-      }),
-    );
+    expect(browser.tabs.create).not.toBeCalled();
   });
 
-  it('should handle invalid pinned URL gracefully', async () => {
+  it('should throw error for invalid pinned URL regex', async () => {
     vi.mocked(browser.tabs.query).mockResolvedValue([]);
 
     await pinnedUrlSettingsStorage.setValue([
@@ -239,14 +236,11 @@ describe('restorePinnedTabs', () => {
       },
     ]);
 
-    await restorePinnedTabs();
+    await expect(restorePinnedTabs()).rejects.toThrowError(
+      'Invalid regex pattern: [invalid-regex',
+    );
 
     expect(browser.tabs.create).not.toBeCalled();
-    expect(browser.notifications.create).toBeCalledWith(
-      expect.objectContaining({
-        title: 'Failed to process pinned URL',
-      }),
-    );
   });
 });
 
