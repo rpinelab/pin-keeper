@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.2.0](https://github.com/rpinelab/pin-keeper/compare/v1.1.0...v1.2.0) (2025-08-17)
+
+
+### Features
+
+* add collapsible functionality to URL add form ([#101](https://github.com/rpinelab/pin-keeper/issues/101)) ([049feee](https://github.com/rpinelab/pin-keeper/commit/049feeeb1f7a937157e0419e88a494807852f238))
+* enhance drag and drop UX with better constraints and touch support ([#97](https://github.com/rpinelab/pin-keeper/issues/97)) ([456f648](https://github.com/rpinelab/pin-keeper/commit/456f648baf95d7ce3d69ec033cd4971c63ec1d88))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.526.0 ([#102](https://github.com/rpinelab/pin-keeper/issues/102)) ([5b551bb](https://github.com/rpinelab/pin-keeper/commit/5b551bb0a9ea1c3dfe553d205f4cc961015849a6))
+* **deps:** update dependency lucide-react to v0.539.0 ([#111](https://github.com/rpinelab/pin-keeper/issues/111)) ([7956f02](https://github.com/rpinelab/pin-keeper/commit/7956f025a99f0b7ea334b7183d17881e6b2a8e7c))
+* **deps:** update radix-ui-primitives monorepo ([#119](https://github.com/rpinelab/pin-keeper/issues/119)) ([3dfbae1](https://github.com/rpinelab/pin-keeper/commit/3dfbae1d6c7568a1380f391830f64c6ca57645a1))
+* **deps:** update react monorepo ([#106](https://github.com/rpinelab/pin-keeper/issues/106)) ([1ad0d69](https://github.com/rpinelab/pin-keeper/commit/1ad0d69948a64ad12afccc1427fbe22758518946))
+* **deps:** update tailwindcss monorepo to v4.1.12 ([#120](https://github.com/rpinelab/pin-keeper/issues/120)) ([11bd726](https://github.com/rpinelab/pin-keeper/commit/11bd7261e00f0cecf18aa7c164fdb7102874bc2f))
+
 ## [1.1.0](https://github.com/rpinelab/pin-keeper/compare/v1.0.0...v1.1.0) (2025-07-23)
 
 
