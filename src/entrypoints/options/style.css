@@ -1,7 +1,7 @@
 /* biome-ignore-all lint/suspicious/noUnknownAtRules: This is a valid Tailwind CSS directive. */
 @import 'tailwindcss';
 
-@plugin 'tailwindcss-animate';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 

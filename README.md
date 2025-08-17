@@ -108,7 +108,6 @@ Gmail is a perfect example of why flexible URL matching is essential. When you h
 | `pnpm run zip` | Package Chrome extension |
 | `pnpm run zip:firefox` | Package Firefox extension |
 | `pnpm run lint` | Run Biome linter |
-| `pnpm run format` | Format code with Biome |
 | `pnpm run check` | Run Biome check and auto-fix |
 | `pnpm run compile` | Type-check with TypeScript |
 | `pnpm run test` | Run tests with Vitest |
