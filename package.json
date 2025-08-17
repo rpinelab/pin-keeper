@@ -11,7 +11,6 @@
     "build": "wxt build",
     "build:firefox": "wxt build -b firefox",
     "lint": "biome lint .",
-    "format": "biome format --write .",
     "check": "biome check --write .",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
