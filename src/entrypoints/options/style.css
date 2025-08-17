@@ -1,3 +1,4 @@
+/* biome-ignore-all lint/suspicious/noUnknownAtRules: This is a valid Tailwind CSS directive. */
 @import 'tailwindcss';
 
 @plugin 'tailwindcss-animate';
