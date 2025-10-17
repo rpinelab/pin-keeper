@@ -42,7 +42,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
     "@types/chrome": "0.1.24",
-    "@types/node": "22.18.10",
+    "@types/node": "22.18.11",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.1",
     "@webext-core/fake-browser": "1.3.2",
