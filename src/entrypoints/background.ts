@@ -45,6 +45,15 @@ export default defineBackground(() => {
     void handleIconClick();
   });
 
+  // Run on installation (only on dev mode)
+  browser.runtime.onInstalled.addListener(
+    (details: Browser.runtime.InstalledDetails & { temporary?: boolean }) => {
+      if (details.reason === 'install' && details.temporary === true) {
+        void handleStartupTabRestore();
+      }
+    },
+  );
+
   // Run on startup
   browser.runtime.onStartup.addListener(() => {
     void handleStartupTabRestore();
