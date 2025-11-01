@@ -1,79 +1,46 @@
-# Pin Keeper - Smart Pinned Tab Manager
+# Pin Keeper
 
-> Automatically restore and manage your pinned tabs with intelligent URL matching and flexible configuration options.
+<img src="src/assets/icon.png" alt="Pin Keeper browser extension logo" width="128" />
 
-![PinKeeper Icon](src/assets/icon.png)
+> Never lose your essential pinned tabs again. Automatically restore them on browser startup with smart URL matching.
 
-## Overview
+Pin Keeper is a browser extension built with [WXT](https://wxt.dev/) and React.
+It stores your pinned tab configuration locally and automatically brings it back on startup, even if the browser crashes or tabs are accidentally closed.
 
-Pin Keeper is a powerful browser extension that solves one of the most frustrating browsing problems: losing your carefully organized pinned tabs when your browser restarts or crashes. Whether you're a developer who keeps documentation open, a researcher with multiple reference sites, or someone who relies on specific web apps throughout the day, Pin Keeper ensures your essential tabs are always there when you need them.
+## ✨ Features
 
-## ✨ Key Features
+- **Auto-restore on startup** - Pinned tabs automatically restore when browser starts
+- **Smart duplicate detection** - Skips tabs that are already open
+- **Flexible URL matching** - Three modes: Exact, Starts With, and Regex
+- **Drag-and-drop ordering** - Arrange tabs in your preferred order
+- **Manual restore** - Click toolbar icon to restore tabs anytime
+- **Pattern testing** - Verify URL rules before saving
 
-### 🔄 **Automatic Tab Restoration**
+## 🚀 Quick Start
 
-- Automatically restores your pinned tabs on browser startup
-- Manual restoration via toolbar button click
-- Configurable startup delay to ensure proper browser initialization
+1. Install the extension
+2. Pin some tabs in your browser
+3. Right-click the extension icon and go to the extension's option page
+4. Add URL patterns for tabs you want to protect (e.g., `https://mail.google.com/`)
+5. Now they'll auto-restore if accidentally closed or browser crashes
 
-### 🎯 **Intelligent URL Matching**
+**Tip:** Click the extension icon anytime to manually restore tabs
 
-- Three matching modes: Exact Match, Starts With, and Regex
-- Handle dynamic URLs with flexible pattern rules
-- Smart detection prevents duplicate tabs
+## 📖 URL Matching Modes
 
-### 🎨 **Intuitive Management**
+Choose the matching mode that fits your needs:
 
-- **Drag-and-drop reordering**: Organize your tabs exactly how you want them
-- **Visual configuration interface**: Easy-to-use settings panel
-- **Pattern testing**: Verify your URL rules work before saving
+| Mode | Example | Use Case |
+|------|---------|----------|
+| **Exact** | `https://github.com/notifications` | Static URLs that never change |
+| **Starts With** | `https://github.com/` | URLs with dynamic paths and query parameters |
+| **Regex** | `https://github\.com/(notifications\|settings)` | Complex matching patterns |
 
-## 📖 How to Use
+**Tip:** Use the built-in pattern tester to validate URL rules before saving.
 
-### Configuring URL Patterns
+### Example: Gmail
 
-Pin Keeper supports three flexible URL matching modes:
-
-- **Exact Match**: `https://github.com/notifications` (matches the URL exactly)
-- **Starts With**: `https://github.com/` (matches any URL that starts with this pattern)
-- **Regex**: `https://github\.com/(notifications|settings)` (matches URLs using regular expressions)
-
-#### Real-World Example: Gmail
-
-Gmail is a perfect example of why flexible URL matching is essential. When you have Gmail pinned and navigate through your emails, the URL changes dynamically:
-
-- **Initial Gmail URL**: `https://mail.google.com/mail/u/0/#inbox`
-- **When opening an email**: `https://mail.google.com/mail/u/0/#inbox/FMfcgzQXKKPLXKpWHKJgTWBmKvbQHHPs`
-- **When composing**: `https://mail.google.com/mail/u/0/#inbox?compose=new`
-
-**Solution**: Use the pattern `https://mail.google.com/mail/u/0/` (`Starts With` matching mode) to match all Gmail states, ensuring your pinned Gmail tab is always restored regardless of which email or folder you were viewing.
-
-### Managing Your Tabs
-
-1. **Reorder tabs**: Drag and drop URLs in the settings to change their restoration order
-2. **Test patterns**: Use the pattern testing feature to ensure your rules work correctly
-3. **Enable/disable auto-restore**: Toggle automatic restoration on browser startup
-4. **Adjust timing**: Set the startup delay to prevent conflicts with other extensions
-
-### Manual Restoration
-
-- Click the Pin Keeper icon in your browser toolbar anytime to manually restore your pinned tabs
-- Useful for testing your configuration or when you accidentally close pinned tabs
-
-## ⚙️ Configuration Options
-
-- **Auto-restore on startup**: Enable/disable automatic tab restoration when browser starts
-- **Startup delay**: Adjust the delay before restoration (default: 100ms)
-- **URL patterns**: Flexible matching rules for your pinned tabs
-- **Tab ordering**: Drag-and-drop to set the order of restored tabs
-
-## Technology Stack
-
-- Language: [TypeScript](https://www.typescriptlang.org/)
-- Package Management: [pnpm](https://pnpm.io/)
-- Browser Extension Framework: [WXT](https://wxt.dev/)
-- Frontend Framework: [React](https://react.dev/)
-- UI Components: [@shadcn/ui](https://ui.shadcn.com/)
+Gmail URLs change as you navigate (`#inbox`, `#inbox/message-id`, `#compose`). Use **Starts With** mode with pattern `https://mail.google.com/mail/u/0/` to match all Gmail states.
 
 ## 🛠️ Development
 
@@ -84,18 +51,11 @@ Gmail is a perfect example of why flexible URL matching is essential. When you h
 
 ### Setup
 
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/rpinelab/pin-keeper.git
-   cd pin-keeper
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
-   pnpm install
-   ```
+```bash
+git clone https://github.com/rpinelab/pin-keeper.git
+cd pin-keeper
+pnpm install
+```
 
 ### Available Scripts
 
@@ -132,7 +92,7 @@ Gmail is a perfect example of why flexible URL matching is essential. When you h
    pnpm run compile
    ```
 
-### Building for Production
+### Packaging the extension
 
 ```bash
 # For Chrome
