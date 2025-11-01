@@ -10,6 +10,10 @@ export default defineConfig({
     browser_specific_settings: {
       gecko: {
         id: '{d01a0cea-aa5d-4147-8536-d1b1e23766ba}',
+        // @ts-expect-error data_collection_permissions is not yet in the wxt's type definitions
+        data_collection_permissions: {
+          required: ['none'],
+        },
       },
     },
   },
