@@ -100,44 +100,68 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col gap-4 bg-background min-h-screen p-4 min-w-[600px] select-none'>
+    <main className='flex flex-col gap-8 bg-background min-h-screen p-8 min-w-xl max-w-4xl mx-auto select-none'>
       <header>
-        <h1 className='text-3xl font-bold border-b border-foreground pb-2'>
-          PinKeeper Options
-        </h1>
+        <h1 className='text-2xl font-semibold tracking-tight'>Settings</h1>
       </header>
-      <section className='flex flex-col gap-4 border border-gray-200 rounded-lg p-4'>
-        <h2 className='text-xl font-semibold'>Auto-Restore Settings</h2>
-        <div className='flex items-center space-x-2'>
-          <Switch
-            id='auto-restore-toggle'
-            checked={autoRestoreEnabled}
-            onCheckedChange={onToggleAutoRestoreEnabled}
-          />
-          <Label htmlFor='auto-restore-toggle'>
-            Automatically restore pinned tabs when browser starts
-          </Label>
+
+      <section className='flex flex-col gap-5'>
+        <div className='space-y-1'>
+          <h2 className='text-xl font-semibold tracking-tight'>Auto-Restore</h2>
+          <p className='text-sm text-muted-foreground'>
+            Restore pinned tabs when browser starts
+          </p>
         </div>
-        <div className='flex items-center gap-2'>
-          <Label htmlFor='auto-restore-delay' className='min-w-fit'>
-            Delay before restoring tabs
-          </Label>
-          <Input
-            id='auto-restore-delay'
-            type='number'
-            value={autoRestoreDelay}
-            onChange={onChangeAutoRestoreDelay}
-            className='w-24'
-            min={0}
-            max={10000}
-          />
-          <span className='text-sm text-muted-foreground'>ms</span>
+        <div className='space-y-4'>
+          <div className='flex items-center space-x-3'>
+            <Switch
+              id='auto-restore-toggle'
+              checked={autoRestoreEnabled}
+              onCheckedChange={onToggleAutoRestoreEnabled}
+            />
+            <Label htmlFor='auto-restore-toggle' className='cursor-pointer'>
+              Enable auto-restore
+            </Label>
+          </div>
+          <div className='flex items-center gap-3 pl-9'>
+            <Label
+              htmlFor='auto-restore-delay'
+              className='min-w-fit text-sm text-muted-foreground'
+            >
+              Delay
+            </Label>
+            <Input
+              id='auto-restore-delay'
+              type='number'
+              value={autoRestoreDelay}
+              onChange={onChangeAutoRestoreDelay}
+              className='w-28'
+              min={0}
+              max={10000}
+            />
+            <span className='text-sm text-muted-foreground'>ms</span>
+          </div>
         </div>
       </section>
-      <section className='flex flex-col gap-4 border border-gray-200 rounded-lg p-4'>
-        <div className='flex items-center justify-between'>
-          <h2 className='text-xl font-semibold'>Pinned URLs</h2>
-          <Button type='button' variant='secondary' onClick={addCurrentTabs}>
+
+      <div className='border-t border-border mx-4' />
+
+      <section className='flex flex-col gap-5'>
+        <div className='flex items-start justify-between'>
+          <div className='space-y-1'>
+            <h2 className='text-xl font-semibold tracking-tight'>
+              Managed Tabs
+            </h2>
+            <p className='text-sm text-muted-foreground'>
+              URLs to pin and restore automatically
+            </p>
+          </div>
+          <Button
+            type='button'
+            variant='outline'
+            onClick={addCurrentTabs}
+            className='shrink-0'
+          >
             Add Current Pinned Tabs
           </Button>
         </div>
@@ -159,7 +183,7 @@ function App() {
               />
             </Button>
           </CollapsibleTrigger>
-          <CollapsibleContent className='mt-2'>
+          <CollapsibleContent className='mt-4'>
             <EditPinnedUrlForm action={editUrl} submitText='Add' />
           </CollapsibleContent>
         </Collapsible>
@@ -173,9 +197,11 @@ function App() {
             items={pinnedUrlSettings}
             strategy={verticalListSortingStrategy}
           >
-            <ul className='flex flex-col gap-2'>
+            <ul className='flex flex-col gap-3'>
               {pinnedUrlSettings.length === 0 && (
-                <li className='text-muted-foreground'>No pinned URLs</li>
+                <li className='text-center py-8 text-muted-foreground text-sm'>
+                  No tabs configured yet
+                </li>
               )}
               {pinnedUrlSettings.map((pinnedUrl) =>
                 editingId === pinnedUrl.id ? (

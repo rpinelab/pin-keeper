@@ -66,62 +66,66 @@ export function EditPinnedUrlForm({
   }, [url, matchType, matchPattern, testUrl]);
 
   return (
-    <form className='flex flex-col border p-2 gap-3' action={addUrl}>
+    <form
+      className='flex flex-col border border-border rounded-lg p-4 gap-4 bg-card shadow-sm'
+      action={addUrl}
+    >
       {initialValue && (
         <input type='hidden' name='id' value={initialValue.id} />
       )}
-      <Input
-        name='url'
-        type='text'
-        value={url}
-        onChange={(e) => {
-          setUrl(e.target.value);
-        }}
-        placeholder='URL to pin'
-      />
-      <div className='grid grid-cols-[auto_1fr_auto] gap-2'>
-        <Select
-          value={matchType}
-          onValueChange={(value) => {
-            setMatchType(value as UrlMatchType);
-          }}
-          name='matchType'
-        >
-          <SelectTrigger className='w-36 min-w-fit'>
-            <SelectValue placeholder='Match Strategy' />
-          </SelectTrigger>
-          <SelectContent>
-            {urlMatchTypes.map((matchType) => (
-              <SelectItem key={matchType.value} value={matchType.value}>
-                {matchType.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <div className='space-y-2'>
+        <Label htmlFor='url' className='text-sm font-medium'>
+          URL
+        </Label>
         <Input
-          name='matchPattern'
+          id='url'
+          name='url'
           type='text'
-          value={matchPattern}
+          value={url}
           onChange={(e) => {
-            setMatchPattern(e.target.value);
+            setUrl(e.target.value);
           }}
-          placeholder='Match pattern (defaults to URL if left empty)'
-          className='flex-grow'
+          placeholder='https://example.com'
         />
-        <Button
-          type='button'
-          variant='outline'
-          onClick={() => {
-            setIsTestSectionVisible(!isTestSectionVisible);
-          }}
-        >
-          <TestTubeDiagonal className='h-4 w-4' />
-          {isTestSectionVisible ? 'Hide Test' : 'Test Pattern'}
-        </Button>
+      </div>
+      <div className='space-y-2'>
+        <Label className='text-sm font-medium'>Match Pattern</Label>
+        <div className='grid grid-cols-[auto_1fr] gap-2'>
+          <Select
+            value={matchType}
+            onValueChange={(value) => {
+              setMatchType(value as UrlMatchType);
+            }}
+            name='matchType'
+          >
+            <SelectTrigger className='w-36 min-w-fit'>
+              <SelectValue placeholder='Match Type' />
+            </SelectTrigger>
+            <SelectContent>
+              {urlMatchTypes.map((matchType) => (
+                <SelectItem key={matchType.value} value={matchType.value}>
+                  {matchType.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Input
+            name='matchPattern'
+            type='text'
+            value={matchPattern}
+            onChange={(e) => {
+              setMatchPattern(e.target.value);
+            }}
+            placeholder='Custom pattern (optional)'
+            className='grow'
+          />
+        </div>
       </div>
       {isTestSectionVisible && (
-        <div className='grid gap-1 p-2'>
-          <Label htmlFor='testUrl'>Test URL Pattern</Label>
+        <div className='space-y-2 p-3 bg-muted/50 rounded-md'>
+          <Label htmlFor='testUrl' className='text-sm font-medium'>
+            Test URL
+          </Label>
           <Input
             id='testUrl'
             type='text'
@@ -129,20 +133,40 @@ export function EditPinnedUrlForm({
             onChange={(e) => {
               setTestUrl(e.target.value);
             }}
-            placeholder='Enter a URL to test'
+            placeholder='Enter URL to test'
             className='w-full'
           />
-          {testResult && <p className='text-sm'>{testResult}</p>}
+          {testResult && (
+            <p
+              className={`text-sm font-medium ${
+                testResult.startsWith('Error')
+                  ? 'text-destructive'
+                  : testResult.includes('matches')
+                    ? 'text-green-600 dark:text-green-400'
+                    : 'text-orange-600 dark:text-orange-400'
+              }`}
+            >
+              {testResult}
+            </p>
+          )}
         </div>
       )}
-      <div className='flex justify-end gap-2'>
-        <SubmitButton submitText={submitText} />
-        {cancelEdit && (
-          <Button type='button' variant='outline' onClick={cancelEdit}>
-            <X className='h-4 w-4' />
-            Cancel
-          </Button>
-        )}
+      <div className='flex justify-between items-center gap-2'>
+        <Button
+          type='button'
+          variant='ghost'
+          size='sm'
+          onClick={() => {
+            setIsTestSectionVisible(!isTestSectionVisible);
+          }}
+        >
+          <TestTubeDiagonal className='h-4 w-4 mr-2' />
+          {isTestSectionVisible ? 'Hide Test' : 'Test Pattern'}
+        </Button>
+        <div className='flex gap-2'>
+          {cancelEdit && <CancelButton cancelEdit={cancelEdit} />}
+          <SubmitButton submitText={submitText} />
+        </div>
       </div>
     </form>
   );
@@ -153,11 +177,20 @@ function SubmitButton({ submitText }: { submitText: string }) {
   return (
     <Button type='submit' disabled={pending}>
       {submitText === 'Add' ? (
-        <Plus className='h-4 w-4' />
+        <Plus className='h-4 w-4 mr-2' />
       ) : (
-        <Save className='h-4 w-4' />
+        <Save className='h-4 w-4 mr-2' />
       )}
       {submitText}
+    </Button>
+  );
+}
+
+function CancelButton({ cancelEdit }: { cancelEdit: () => void }) {
+  return (
+    <Button type='button' variant='outline' onClick={cancelEdit}>
+      <X className='h-4 w-4 mr-2' />
+      Cancel
     </Button>
   );
 }
