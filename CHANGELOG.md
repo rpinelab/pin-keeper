@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.3.0](https://github.com/rpinelab/pin-keeper/compare/v1.2.0...v1.3.0) (2025-11-01)
+
+
+### Features
+
+* **ui:** improve options page layout and visual design ([#200](https://github.com/rpinelab/pin-keeper/issues/200)) ([dc99ff5](https://github.com/rpinelab/pin-keeper/commit/dc99ff509b56cf4e29a2d6187bbe4904941d0805))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.541.0 ([#129](https://github.com/rpinelab/pin-keeper/issues/129)) ([99b3e1f](https://github.com/rpinelab/pin-keeper/commit/99b3e1f63c5bff2db9a9d75059be543685f9d9d9))
+* **deps:** update dependency lucide-react to v0.542.0 ([#134](https://github.com/rpinelab/pin-keeper/issues/134)) ([990a099](https://github.com/rpinelab/pin-keeper/commit/990a099a9bfdd9f42fff1e5c2a0470935eef720e))
+* **deps:** update dependency lucide-react to v0.544.0 ([#152](https://github.com/rpinelab/pin-keeper/issues/152)) ([9d2b11c](https://github.com/rpinelab/pin-keeper/commit/9d2b11c74efbb80cf8847fb6816ac84a94c2c7ac))
+* **deps:** update dependency lucide-react to v0.545.0 ([#175](https://github.com/rpinelab/pin-keeper/issues/175)) ([12900d2](https://github.com/rpinelab/pin-keeper/commit/12900d2a0f786fd5af971f7af13bfc39bade01f9))
+* **deps:** update dependency lucide-react to v0.546.0 ([#183](https://github.com/rpinelab/pin-keeper/issues/183)) ([334d408](https://github.com/rpinelab/pin-keeper/commit/334d408025e6c1cf05b62a2f83fa252a18f25670))
+* **deps:** update dependency lucide-react to v0.548.0 ([#192](https://github.com/rpinelab/pin-keeper/issues/192)) ([a2f6787](https://github.com/rpinelab/pin-keeper/commit/a2f6787400f2b5a6e8835fe342655ba485f940a1))
+* **deps:** update dependency lucide-react to v0.552.0 ([#198](https://github.com/rpinelab/pin-keeper/issues/198)) ([f036e42](https://github.com/rpinelab/pin-keeper/commit/f036e42de2ef972e6c96805a2b1198406cb20eac))
+* **deps:** update dependency nanoid to v5.1.6 ([#160](https://github.com/rpinelab/pin-keeper/issues/160)) ([5bf4ad2](https://github.com/rpinelab/pin-keeper/commit/5bf4ad2cdbe2dbdc158f06ce70066701b5055090))
+* **deps:** update react monorepo to v19.2.0 ([#170](https://github.com/rpinelab/pin-keeper/issues/170)) ([b54caee](https://github.com/rpinelab/pin-keeper/commit/b54caeed90fa2d0659596c504eeded9d91002c94))
+* **deps:** update tailwindcss monorepo to v4.1.13 ([#143](https://github.com/rpinelab/pin-keeper/issues/143)) ([d432f9b](https://github.com/rpinelab/pin-keeper/commit/d432f9b9bd0bc69b92ab5a27b8740b618ea96564))
+* **deps:** update tailwindcss monorepo to v4.1.14 ([#168](https://github.com/rpinelab/pin-keeper/issues/168)) ([1170e5c](https://github.com/rpinelab/pin-keeper/commit/1170e5cdd14b0ccd0ba6a09e708bf97659c2d309))
+* **deps:** update tailwindcss monorepo to v4.1.16 ([#189](https://github.com/rpinelab/pin-keeper/issues/189)) ([43e764d](https://github.com/rpinelab/pin-keeper/commit/43e764d553e572ca6c54255bb92d5d145b5f2384))
+
 ## [1.2.0](https://github.com/rpinelab/pin-keeper/compare/v1.1.0...v1.2.0) (2025-08-17)
 
 
