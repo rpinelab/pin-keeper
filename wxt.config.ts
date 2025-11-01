@@ -5,7 +5,7 @@ import { defineConfig } from 'wxt';
 export default defineConfig({
   manifest: {
     name: 'Pin Keeper - Smart Pinned Tab Manager',
-    permissions: ['notifications', 'storage', 'tabs'],
+    permissions: ['contextMenus', 'notifications', 'storage', 'tabs'],
     action: {},
     browser_specific_settings: {
       gecko: {

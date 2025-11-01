@@ -7,6 +7,8 @@ import {
 } from '@/utils/storage';
 import { restorePinnedTabs } from '@/utils/tabManager';
 
+const CONTEXT_MENU_OPEN_OPTIONS = 'open-options';
+
 async function handleIconClick() {
   try {
     await restorePinnedTabs();
@@ -45,14 +47,28 @@ export default defineBackground(() => {
     void handleIconClick();
   });
 
-  // Run on installation (only on dev mode)
   browser.runtime.onInstalled.addListener(
     (details: Browser.runtime.InstalledDetails & { temporary?: boolean }) => {
+      // Run on installation (only on dev mode)
       if (details.reason === 'install' && details.temporary === true) {
         void handleStartupTabRestore();
       }
+
+      // Create context menu item on extension button
+      browser.contextMenus.create({
+        id: CONTEXT_MENU_OPEN_OPTIONS,
+        title: 'Options',
+        contexts: ['browser_action'],
+      });
     },
   );
+
+  // Handle context menu clicks
+  browser.contextMenus.onClicked.addListener((info) => {
+    if (info.menuItemId === CONTEXT_MENU_OPEN_OPTIONS) {
+      void browser.runtime.openOptionsPage();
+    }
+  });
 
   // Run on startup
   browser.runtime.onStartup.addListener(() => {
