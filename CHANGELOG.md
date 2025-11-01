@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/rpinelab/pin-keeper/compare/v1.3.1...v1.4.0) (2025-11-01)
+
+
+### Features
+
+* add Firefox data collection consent permissions ([#208](https://github.com/rpinelab/pin-keeper/issues/208)) ([b0733a5](https://github.com/rpinelab/pin-keeper/commit/b0733a544e1ddb8d07175c8896588f552aac47a2))
+
 ## [1.3.1](https://github.com/rpinelab/pin-keeper/compare/v1.3.0...v1.3.1) (2025-11-01)
 
 
