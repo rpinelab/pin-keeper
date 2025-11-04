@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/rpinelab/pin-keeper/compare/v1.4.0...v1.5.0) (2025-11-04)
+
+
+### Features
+
+* add options context menu item to extension action button ([#213](https://github.com/rpinelab/pin-keeper/issues/213)) ([360e27b](https://github.com/rpinelab/pin-keeper/commit/360e27b972cd437a1049a12b69009eed7b700b66))
+* improve background script and add dev mode auto-restore ([#211](https://github.com/rpinelab/pin-keeper/issues/211)) ([f619673](https://github.com/rpinelab/pin-keeper/commit/f61967330697ddb111e80e9e889f604d8f64e033))
+
 ## [1.4.0](https://github.com/rpinelab/pin-keeper/compare/v1.3.1...v1.4.0) (2025-11-01)
 
 
