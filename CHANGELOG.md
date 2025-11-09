@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/rpinelab/pin-keeper/compare/v1.5.0...v1.5.1) (2025-11-09)
+
+
+### Bug Fixes
+
+* **deps:** update radix-ui-primitives monorepo ([#217](https://github.com/rpinelab/pin-keeper/issues/217)) ([3fe65f4](https://github.com/rpinelab/pin-keeper/commit/3fe65f45e858fe1443aceb741760ba57fedb7341))
+
 ## [1.5.0](https://github.com/rpinelab/pin-keeper/compare/v1.4.0...v1.5.0) (2025-11-04)
 
 
