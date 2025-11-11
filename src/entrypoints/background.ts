@@ -55,11 +55,25 @@ export default defineBackground(() => {
       }
 
       // Create context menu item on extension button
-      browser.contextMenus.create({
-        id: CONTEXT_MENU_OPEN_OPTIONS,
-        title: 'Options',
-        contexts: ['browser_action'],
-      });
+      browser.contextMenus.create(
+        {
+          id: CONTEXT_MENU_OPEN_OPTIONS,
+          title: 'Options',
+          contexts: [
+            import.meta.env.MANIFEST_VERSION === 2
+              ? 'browser_action'
+              : 'action',
+          ],
+        },
+        () => {
+          if (browser.runtime.lastError) {
+            console.error(
+              'Pin Keeper: Context menu creation failed:',
+              browser.runtime.lastError,
+            );
+          }
+        },
+      );
     },
   );
 
