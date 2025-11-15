@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.2](https://github.com/rpinelab/pin-keeper/compare/v1.5.1...v1.5.2) (2025-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.553.0 ([#230](https://github.com/rpinelab/pin-keeper/issues/230)) ([d2bdd12](https://github.com/rpinelab/pin-keeper/commit/d2bdd12e9a21323c35cd9cf5d684fbfe51f10b78))
+* **deps:** update dependency tailwind-merge to v3.4.0 ([#231](https://github.com/rpinelab/pin-keeper/issues/231)) ([bac7ba4](https://github.com/rpinelab/pin-keeper/commit/bac7ba4f1ecb010407d91ec08fa7a65239dbfac7))
+* **deps:** update tailwindcss monorepo to v4.1.17 ([#228](https://github.com/rpinelab/pin-keeper/issues/228)) ([505f1ea](https://github.com/rpinelab/pin-keeper/commit/505f1ea6c5d5ee8dc61e18146d746f51f34e8b5a))
+
 ## [1.5.1](https://github.com/rpinelab/pin-keeper/compare/v1.5.0...v1.5.1) (2025-11-09)
 
 
