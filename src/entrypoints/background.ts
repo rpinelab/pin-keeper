@@ -11,7 +11,7 @@ const CONTEXT_MENU_OPEN_OPTIONS = 'open-options';
 
 async function handleIconClick() {
   try {
-    await restorePinnedTabs();
+    await restorePinnedTabs({ showNotification: true });
   } catch (error) {
     console.error('Pin Keeper: Manual tab restoration failed:', error);
   }
@@ -30,7 +30,7 @@ async function handleStartupTabRestore() {
     setTimeout(() => {
       void (async () => {
         try {
-          await restorePinnedTabs();
+          await restorePinnedTabs({ showNotification: false });
         } catch (error) {
           console.error('Pin Keeper: Startup tab restoration failed:', error);
         }
