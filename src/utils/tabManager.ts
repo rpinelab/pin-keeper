@@ -3,18 +3,24 @@ import { type Browser, browser } from 'wxt/browser';
 
 import { type PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
+export interface RestorePinnedTabsOptions {
+  showNotification?: boolean;
+}
+
 // Main function to restore pinned tabs
-export const restorePinnedTabs = async () => {
+export const restorePinnedTabs = async (options?: RestorePinnedTabsOptions) => {
   const pinnedTabs = await browser.tabs.query({ pinned: true });
   const pinnedUrlConfigs = await pinnedUrlSettingsStorage.getValue();
 
   if (pinnedUrlConfigs.length === 0) {
-    await browser.notifications.create({
-      type: 'basic',
-      title: 'No pinned URLs configured',
-      message: 'Please configure pinned URLs in the extension settings',
-      iconUrl: 'icon.png',
-    });
+    if (options?.showNotification !== false) {
+      await browser.notifications.create({
+        type: 'basic',
+        title: 'No pinned URLs configured',
+        message: 'Please configure pinned URLs in the extension settings',
+        iconUrl: 'icon.png',
+      });
+    }
     return;
   }
 
