@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.6.0](https://github.com/rpinelab/pin-keeper/compare/v1.5.1...v1.6.0) (2025-11-29)
+
+
+### Features
+
+* add conditional notification control for tab restoration ([#238](https://github.com/rpinelab/pin-keeper/issues/238)) ([ac70215](https://github.com/rpinelab/pin-keeper/commit/ac702154df94515646810276cd4f645bb97f7a58))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.553.0 ([#230](https://github.com/rpinelab/pin-keeper/issues/230)) ([d2bdd12](https://github.com/rpinelab/pin-keeper/commit/d2bdd12e9a21323c35cd9cf5d684fbfe51f10b78))
+* **deps:** update dependency lucide-react to v0.554.0 ([#245](https://github.com/rpinelab/pin-keeper/issues/245)) ([ac7e59d](https://github.com/rpinelab/pin-keeper/commit/ac7e59dcb66af5794a6e270dbb44e04bd8b08d24))
+* **deps:** update dependency lucide-react to v0.555.0 ([#247](https://github.com/rpinelab/pin-keeper/issues/247)) ([fc28ec0](https://github.com/rpinelab/pin-keeper/commit/fc28ec0c6c16d404c9fd950d158e1834f2ca7224))
+* **deps:** update dependency tailwind-merge to v3.4.0 ([#231](https://github.com/rpinelab/pin-keeper/issues/231)) ([bac7ba4](https://github.com/rpinelab/pin-keeper/commit/bac7ba4f1ecb010407d91ec08fa7a65239dbfac7))
+* **deps:** update tailwindcss monorepo to v4.1.17 ([#228](https://github.com/rpinelab/pin-keeper/issues/228)) ([505f1ea](https://github.com/rpinelab/pin-keeper/commit/505f1ea6c5d5ee8dc61e18146d746f51f34e8b5a))
+
 ## [1.5.1](https://github.com/rpinelab/pin-keeper/compare/v1.5.0...v1.5.1) (2025-11-09)
 
 
