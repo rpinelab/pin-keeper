@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1](https://github.com/rpinelab/pin-keeper/compare/v1.6.0...v1.6.1) (2025-12-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.556.0 ([#259](https://github.com/rpinelab/pin-keeper/issues/259)) ([b93d6c8](https://github.com/rpinelab/pin-keeper/commit/b93d6c8d7e7148a46e6e3fc4a153ae2b805fc690))
+* **deps:** update dependency lucide-react to v0.557.0 ([#260](https://github.com/rpinelab/pin-keeper/issues/260)) ([1a0105d](https://github.com/rpinelab/pin-keeper/commit/1a0105db47d3e4763503cc5b254b3285893b9adb))
+* **deps:** update dependency lucide-react to v0.559.0 ([#261](https://github.com/rpinelab/pin-keeper/issues/261)) ([8f8db21](https://github.com/rpinelab/pin-keeper/commit/8f8db216d4dcab254411c315e4eb019aea0f713c))
+* **deps:** update react monorepo to v19.2.1 ([#255](https://github.com/rpinelab/pin-keeper/issues/255)) ([0ac1ac9](https://github.com/rpinelab/pin-keeper/commit/0ac1ac933edf8f95c808fe9e241352859e3d435a))
+
 ## [1.6.0](https://github.com/rpinelab/pin-keeper/compare/v1.5.1...v1.6.0) (2025-11-29)
 
 
