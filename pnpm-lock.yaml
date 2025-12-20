@@ -83,10 +83,10 @@ importers:
         version: 19.2.3(@types/react@19.2.7)
       '@wxt-dev/auto-icons':
         specifier: 1.1.0
-        version: 1.1.0(wxt@0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))
+        version: 1.1.0(wxt@0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))
       '@wxt-dev/module-react':
         specifier: 1.1.5
-        version: 1.1.5(vite@7.3.0(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))(wxt@0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))
+        version: 1.1.5(vite@7.3.0(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))(wxt@0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -106,8 +106,8 @@ importers:
         specifier: 4.0.16
         version: 4.0.16(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)
       wxt:
-        specifier: 0.20.12
-        version: 0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
+        specifier: 0.20.13
+        version: 0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
 
 packages:
 
@@ -1729,9 +1729,6 @@ packages:
     resolution: {integrity: sha512-JhFGDVJ7tmDJItKhYgJCGLOWjuK9vPxiXoUFLwLDc99NlmklilbiQJwoctZtt13+xMw91MCk/REan6MWHqDjyA==}
     engines: {node: '>=12.0.0'}
 
-  exsolve@1.0.7:
-    resolution: {integrity: sha512-VO5fQUzZtI6C+vx4w/4BWJpg3s/5l+6pRQEHzFRM8WFi4XffSP1Z+4qi7GbjWbvRQEbdIco5mIMq+zX4rPuLrw==}
-
   exsolve@1.0.8:
     resolution: {integrity: sha512-LmDxfWXwcTArk8fUEnOfSZpHOJ6zOMUJKOtFLFqJLoKJetuQG874Uc7/Kki7zFLzYybmZhp1M7+98pfMqeX8yA==}
 
@@ -2996,8 +2993,8 @@ packages:
     resolution: {integrity: sha512-h3Fbisa2nKGPxCpm89Hk33lBLsnaGBvctQopaBSOW/uIs6FTe1ATyAnKFJrzVs9vpGdsTe73WF3V4lIsk4Gacw==}
     engines: {node: '>=18'}
 
-  wxt@0.20.12:
-    resolution: {integrity: sha512-Ra4pu72WXFv9nTLDGVizJuThHKVvKB7iNAkWuORyMaIs9s/WCqXK8Ael83XKnSOyTKjDQ9wGIZ28QUOzizGZ6w==}
+  wxt@0.20.13:
+    resolution: {integrity: sha512-FwQEk+0a4/pYha6rTKGl5iicU6kRYDBDiElJf55CFEfoJKqvGzBTZpphafurQfqU1X0hvAm9w5GEWC0thXI6wQ==}
     hasBin: true
 
   xdg-basedir@5.1.0:
@@ -4038,22 +4035,22 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@wxt-dev/auto-icons@1.1.0(wxt@0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))':
+  '@wxt-dev/auto-icons@1.1.0(wxt@0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))':
     dependencies:
       defu: 6.1.4
       fs-extra: 11.3.0
       sharp: 0.34.3
-      wxt: 0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
+      wxt: 0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
 
   '@wxt-dev/browser@0.1.32':
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
 
-  '@wxt-dev/module-react@1.1.5(vite@7.3.0(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))(wxt@0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))':
+  '@wxt-dev/module-react@1.1.5(vite@7.3.0(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))(wxt@0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1))':
     dependencies:
       '@vitejs/plugin-react': 5.0.2(vite@7.3.0(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))
-      wxt: 0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
+      wxt: 0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1)
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -4484,8 +4481,6 @@ snapshots:
   eventemitter3@5.0.1: {}
 
   expect-type@1.2.2: {}
-
-  exsolve@1.0.7: {}
 
   exsolve@1.0.8: {}
 
@@ -5112,7 +5107,7 @@ snapshots:
   pkg-types@2.3.0:
     dependencies:
       confbox: 0.2.2
-      exsolve: 1.0.7
+      exsolve: 1.0.8
       pathe: 2.0.3
 
   postcss@8.5.6:
@@ -5741,7 +5736,7 @@ snapshots:
     dependencies:
       is-wsl: 3.1.0
 
-  wxt@0.20.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1):
+  wxt@0.20.13(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.44.1):
     dependencies:
       '@1natsu/wait-element': 4.1.2
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.44.1)
