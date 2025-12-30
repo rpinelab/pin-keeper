@@ -122,7 +122,7 @@ Files in `src/components/ui/` are excluded from Biome checks (shadcn-generated).
 
 ## Git Workflow
 
-- Pre-commit hook: Runs `lint-staged` with Biome checks
+- Pre-commit hook: Runs `lefthook` with Biome checks
 - Staged files are automatically formatted via Biome before commit
 
 ## Important Notes
