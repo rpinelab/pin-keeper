@@ -9,8 +9,8 @@ function extractDomain(urlString: string): string | null {
     const url = new URL(urlString);
     return url.hostname;
   } catch {
-    // If it's not a valid URL, check if it looks like a domain (has a dot and no protocol)
-    // Basic validation: must have a dot, no protocol, no path/query/hash
+    // If it's not a valid URL, attempt to parse as domain-only pattern
+    // Reject strings with path, query, or hash components
     if (
       urlString.includes('.') &&
       !urlString.includes('://') &&
@@ -18,7 +18,7 @@ function extractDomain(urlString: string): string | null {
       !urlString.includes('?') &&
       !urlString.includes('#')
     ) {
-      // Try to parse it as a URL with a dummy protocol
+      // Validate by attempting to parse with dummy protocol
       try {
         const testUrl = new URL(`https://${urlString}`);
         return testUrl.hostname;
