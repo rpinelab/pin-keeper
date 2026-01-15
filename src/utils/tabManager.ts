@@ -3,6 +3,24 @@ import { type Browser, browser } from 'wxt/browser';
 
 import { type PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
+// Helper function to extract domain from URL
+function extractDomain(urlString: string): string | null {
+  try {
+    const url = new URL(urlString);
+    return url.hostname;
+  } catch {
+    // If it's not a valid URL, check if it looks like a domain (has a dot and no protocol)
+    if (
+      urlString.includes('.') &&
+      !urlString.includes('://') &&
+      !urlString.includes('/')
+    ) {
+      return urlString;
+    }
+    return null;
+  }
+}
+
 export interface RestorePinnedTabsOptions {
   showNotification?: boolean;
 }
@@ -52,6 +70,17 @@ export function createTabUrlMatcher(
     case 'startsWith': {
       const pattern = pinnedUrlConfig.matchPattern || pinnedUrlConfig.url;
       return (tab) => tab.url?.startsWith(pattern) ?? false;
+    }
+    case 'domain': {
+      const pattern = pinnedUrlConfig.matchPattern || pinnedUrlConfig.url;
+      const targetDomain = extractDomain(pattern);
+      return (tab) => {
+        if (!tab.url || !targetDomain) {
+          return false;
+        }
+        const tabDomain = extractDomain(tab.url);
+        return tabDomain === targetDomain;
+      };
     }
     case 'regex': {
       try {

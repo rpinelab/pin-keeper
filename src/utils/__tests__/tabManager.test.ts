@@ -47,6 +47,61 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'https://another.com/test' })).toBe(false);
   });
 
+  it('should match URLs by domain', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://mail.google.com/mail/u/1/#inbox',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(matcher({ url: 'https://mail.google.com/mail/u/1/#inbox' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'https://mail.google.com/mail/u/2/#sent' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'http://mail.google.com/' })).toBe(true);
+    expect(matcher({ url: 'https://www.google.com' })).toBe(false);
+    expect(matcher({ url: 'https://google.com' })).toBe(false);
+  });
+
+  it('should match domains using custom pattern', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://mail.google.com',
+      matchType: 'domain',
+      matchPattern: 'example.com',
+    });
+
+    expect(matcher({ url: 'https://example.com' })).toBe(true);
+    expect(matcher({ url: 'https://example.com/page' })).toBe(true);
+    expect(matcher({ url: 'http://example.com/test?id=123#anchor' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'https://subdomain.example.com' })).toBe(false);
+    expect(matcher({ url: 'https://mail.google.com' })).toBe(false);
+  });
+
+  it('should handle invalid URLs in domain match', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://example.com',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(matcher({ url: 'not-a-valid-url' })).toBe(false);
+    expect(matcher({ url: '' })).toBe(false);
+  });
+
+  it('should handle invalid pattern in domain match', () => {
+    const matcher = createTabUrlMatcher({
+      url: '',
+      matchType: 'domain',
+      matchPattern: 'not-a-valid-url',
+    });
+
+    expect(matcher({ url: 'https://example.com' })).toBe(false);
+  });
+
   it('should throw an error for invalid regex patterns', () => {
     expect(() =>
       createTabUrlMatcher({
