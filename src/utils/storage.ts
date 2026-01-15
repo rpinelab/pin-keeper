@@ -1,12 +1,13 @@
 import { storage } from 'wxt/utils/storage';
 
-const allUrlMatchTypes = ['exact', 'startsWith', 'regex'] as const;
+const allUrlMatchTypes = ['exact', 'startsWith', 'domain', 'regex'] as const;
 
 export type UrlMatchType = (typeof allUrlMatchTypes)[number];
 
 export const urlMatchTypeLabels: Record<UrlMatchType, string> = {
   exact: 'Exact Match',
   startsWith: 'Starts With',
+  domain: 'Domain Match',
   regex: 'Regex',
 };
 
