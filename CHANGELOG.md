@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.6.1](https://github.com/rpinelab/pin-keeper/compare/v1.6.0...v1.6.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.556.0 ([#259](https://github.com/rpinelab/pin-keeper/issues/259)) ([b93d6c8](https://github.com/rpinelab/pin-keeper/commit/b93d6c8d7e7148a46e6e3fc4a153ae2b805fc690))
+* **deps:** update dependency lucide-react to v0.557.0 ([#260](https://github.com/rpinelab/pin-keeper/issues/260)) ([1a0105d](https://github.com/rpinelab/pin-keeper/commit/1a0105db47d3e4763503cc5b254b3285893b9adb))
+* **deps:** update dependency lucide-react to v0.559.0 ([#261](https://github.com/rpinelab/pin-keeper/issues/261)) ([8f8db21](https://github.com/rpinelab/pin-keeper/commit/8f8db216d4dcab254411c315e4eb019aea0f713c))
+* **deps:** update dependency lucide-react to v0.560.0 ([#262](https://github.com/rpinelab/pin-keeper/issues/262)) ([01c1721](https://github.com/rpinelab/pin-keeper/commit/01c17217404b8851b425f231c9957580aead5e08))
+* **deps:** update dependency lucide-react to v0.561.0 ([#268](https://github.com/rpinelab/pin-keeper/issues/268)) ([38c3291](https://github.com/rpinelab/pin-keeper/commit/38c3291fff697ddce02ff974d86c19a7b4e32882))
+* **deps:** update dependency lucide-react to v0.562.0 ([#273](https://github.com/rpinelab/pin-keeper/issues/273)) ([02ac27c](https://github.com/rpinelab/pin-keeper/commit/02ac27cb68ac58f07416af8bb8d3f0801f13f6a4))
+* **deps:** update react monorepo to v19.2.1 ([#255](https://github.com/rpinelab/pin-keeper/issues/255)) ([0ac1ac9](https://github.com/rpinelab/pin-keeper/commit/0ac1ac933edf8f95c808fe9e241352859e3d435a))
+* **deps:** update react monorepo to v19.2.3 ([#264](https://github.com/rpinelab/pin-keeper/issues/264)) ([3fb3834](https://github.com/rpinelab/pin-keeper/commit/3fb3834de118f8a26098f9b4863e7b69d8a264e7))
+* **deps:** update tailwindcss monorepo to v4.1.18 ([#265](https://github.com/rpinelab/pin-keeper/issues/265)) ([1cefe2d](https://github.com/rpinelab/pin-keeper/commit/1cefe2d5ada684b97d67421c5e44a2b3cf829bb2))
+
 ## [1.6.0](https://github.com/rpinelab/pin-keeper/compare/v1.5.1...v1.6.0) (2025-11-29)
 
 
