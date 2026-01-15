@@ -3,14 +3,17 @@ import { type Browser, browser } from 'wxt/browser';
 
 import { type PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
-// Helper function to extract domain from URL
+// Helper function to extract domain (hostname) from URL
+// Supports both full URLs (https://example.com/path) and bare domain patterns (example.com)
 function extractDomain(urlString: string): string | null {
   try {
+    // Try parsing as a full URL first
     const url = new URL(urlString);
     return url.hostname;
   } catch {
-    // If it's not a valid URL, attempt to parse as domain-only pattern
-    // Reject strings with path, query, or hash components
+    // Fallback: attempt to parse as a bare domain pattern (e.g., "example.com")
+    // This allows users to specify domain-only patterns in the matchPattern field
+    // Validation: must contain a dot, and cannot contain URL components
     if (
       urlString.includes('.') &&
       !urlString.includes('://') &&
@@ -18,11 +21,13 @@ function extractDomain(urlString: string): string | null {
       !urlString.includes('?') &&
       !urlString.includes('#')
     ) {
-      // Validate by attempting to parse with dummy protocol
+      // Validate by attempting to parse with a dummy protocol
+      // This leverages the URL API's built-in validation for proper domain format
       try {
         const testUrl = new URL(`https://${urlString}`);
         return testUrl.hostname;
       } catch {
+        // Invalid domain format
         return null;
       }
     }
