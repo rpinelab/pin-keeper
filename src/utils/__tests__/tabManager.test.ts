@@ -81,6 +81,21 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'https://mail.google.com' })).toBe(false);
   });
 
+  it('should handle domains with ports', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'http://localhost:3000',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    // Domain matching ignores ports - only compares hostname
+    expect(matcher({ url: 'http://localhost:3000' })).toBe(true);
+    expect(matcher({ url: 'http://localhost:3000/page' })).toBe(true);
+    expect(matcher({ url: 'https://localhost:3000' })).toBe(true);
+    // Different port but same domain (localhost) - still matches
+    expect(matcher({ url: 'http://localhost:8080' })).toBe(true);
+  });
+
   it('should handle invalid URLs in domain match', () => {
     const matcher = createTabUrlMatcher({
       url: 'https://example.com',
