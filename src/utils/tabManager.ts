@@ -10,12 +10,21 @@ function extractDomain(urlString: string): string | null {
     return url.hostname;
   } catch {
     // If it's not a valid URL, check if it looks like a domain (has a dot and no protocol)
+    // Basic validation: must have a dot, no protocol, no path/query/hash
     if (
       urlString.includes('.') &&
       !urlString.includes('://') &&
-      !urlString.includes('/')
+      !urlString.includes('/') &&
+      !urlString.includes('?') &&
+      !urlString.includes('#')
     ) {
-      return urlString;
+      // Try to parse it as a URL with a dummy protocol
+      try {
+        const testUrl = new URL(`https://${urlString}`);
+        return testUrl.hostname;
+      } catch {
+        return null;
+      }
     }
     return null;
   }
