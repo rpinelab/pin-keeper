@@ -3,6 +3,14 @@ import { type Browser, browser } from 'wxt/browser';
 
 import { type PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
+// Regex pattern to validate bare domain formats (e.g., "example.com", "sub.example.co.uk")
+// - Allows alphanumeric characters, dots, and hyphens
+// - Must start and end with alphanumeric characters
+// - Must have at least one dot followed by a valid TLD (2+ characters)
+// - Rejects ports, paths, query strings, and hash fragments
+const BARE_DOMAIN_REGEX =
+  /^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+
 // Helper function to extract domain (hostname) from URL
 // Supports both full URLs (https://example.com/path) and bare domain patterns (example.com)
 function extractDomain(urlString: string): string | null {
@@ -13,11 +21,7 @@ function extractDomain(urlString: string): string | null {
   } catch {
     // Fallback: attempt to parse as a bare domain pattern (e.g., "example.com")
     // This allows users to specify domain-only patterns in the matchPattern field
-    // Use regex to validate bare domain format: alphanumeric, dots, hyphens, must have TLD
-    const bareDomainRegex =
-      /^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
-
-    if (bareDomainRegex.test(urlString)) {
+    if (BARE_DOMAIN_REGEX.test(urlString)) {
       // Validate by attempting to parse with a dummy protocol
       // This leverages the URL API's built-in validation for proper domain format
       try {
