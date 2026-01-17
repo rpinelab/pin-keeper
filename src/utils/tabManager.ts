@@ -13,7 +13,7 @@ function extractDomain(urlString: string): string | null {
   } catch {
     // Fallback: attempt to parse as a bare domain pattern (e.g., "example.com" or "192.168.1.1")
     // This allows users to specify domain-only patterns in the matchPattern field
-    // The URL API validation below will handle all validation including IPv4 addresses
+    // The URL API validation in the try-catch block below handles all validation including IPv4 addresses
     try {
       const testUrl = new URL(`https://${urlString}`);
       return testUrl.hostname;
