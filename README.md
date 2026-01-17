@@ -34,7 +34,7 @@ Choose the matching mode that fits your needs:
 |------|---------|----------|
 | **Exact** | `https://github.com/notifications` | Static URLs that never change |
 | **Starts With** | `https://github.com/` | URLs with dynamic paths and query parameters |
-| **Domain Match** | `https://mail.google.com/mail/u/1/#inbox` | Match all URLs on the same domain (ignores protocol, path, query, hash) |
+| **Domain Match** | `https://mail.google.com/mail/u/1/#inbox` | Match all URLs with the same hostname (ignores protocol, path, query, hash) |
 | **Regex** | `https://github\.com/(notifications\|settings)` | Complex matching patterns |
 
 **Tip:** Use the built-in pattern tester to validate URL rules before saving.
