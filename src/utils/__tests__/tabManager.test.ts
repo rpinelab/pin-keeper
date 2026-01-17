@@ -117,6 +117,17 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'https://example.com' })).toBe(false);
   });
 
+  it('should reject bare domain patterns with ports', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://example.com',
+      matchType: 'domain',
+      matchPattern: 'example.com:8080',
+    });
+
+    // Port should be rejected in bare domain pattern
+    expect(matcher({ url: 'https://example.com' })).toBe(false);
+  });
+
   it('should throw an error for invalid regex patterns', () => {
     expect(() =>
       createTabUrlMatcher({

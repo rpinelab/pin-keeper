@@ -13,14 +13,11 @@ function extractDomain(urlString: string): string | null {
   } catch {
     // Fallback: attempt to parse as a bare domain pattern (e.g., "example.com")
     // This allows users to specify domain-only patterns in the matchPattern field
-    // Validation: must contain a dot, and cannot contain URL components
-    if (
-      urlString.includes('.') &&
-      !urlString.includes('://') &&
-      !urlString.includes('/') &&
-      !urlString.includes('?') &&
-      !urlString.includes('#')
-    ) {
+    // Use regex to validate bare domain format: alphanumeric, dots, hyphens, must have TLD
+    const bareDomainRegex =
+      /^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+
+    if (bareDomainRegex.test(urlString)) {
       // Validate by attempting to parse with a dummy protocol
       // This leverages the URL API's built-in validation for proper domain format
       try {
