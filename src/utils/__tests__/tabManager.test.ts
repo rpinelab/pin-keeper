@@ -117,15 +117,17 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'https://example.com' })).toBe(false);
   });
 
-  it('should reject bare domain patterns with ports', () => {
+  it('should support IPv4 addresses in bare domain patterns', () => {
     const matcher = createTabUrlMatcher({
-      url: 'https://example.com',
+      url: 'http://192.168.1.1',
       matchType: 'domain',
-      matchPattern: 'example.com:8080',
+      matchPattern: '192.168.1.1',
     });
 
-    // Port should be rejected in bare domain pattern
-    expect(matcher({ url: 'https://example.com' })).toBe(false);
+    // IPv4 addresses should be supported
+    expect(matcher({ url: 'http://192.168.1.1' })).toBe(true);
+    expect(matcher({ url: 'http://192.168.1.1:8080' })).toBe(true);
+    expect(matcher({ url: 'http://192.168.1.2' })).toBe(false);
   });
 
   it('should throw an error for invalid regex patterns', () => {
