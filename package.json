@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
-    "@types/chrome": "0.1.33",
+    "@types/chrome": "0.1.35",
     "@types/node": "24.9.2",
     "@types/react": "19.2.8",
     "@types/react-dom": "19.2.3",
