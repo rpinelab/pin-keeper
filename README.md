@@ -11,7 +11,7 @@ It stores your pinned tab configuration locally and automatically brings it back
 
 - **Auto-restore on startup** - Pinned tabs automatically restore when browser starts
 - **Smart duplicate detection** - Skips tabs that are already open
-- **Flexible URL matching** - Three modes: Exact, Starts With, and Regex
+- **Flexible URL matching** - Four modes: Exact, Starts With, Domain Match, and Regex
 - **Drag-and-drop ordering** - Arrange tabs in your preferred order
 - **Manual restore** - Click toolbar icon to restore tabs anytime
 - **Pattern testing** - Verify URL rules before saving
@@ -34,13 +34,22 @@ Choose the matching mode that fits your needs:
 |------|---------|----------|
 | **Exact** | `https://github.com/notifications` | Static URLs that never change |
 | **Starts With** | `https://github.com/` | URLs with dynamic paths and query parameters |
+| **Domain Match** | `https://mail.google.com/mail/u/1/#inbox` | Match all URLs with the same hostname (ignores protocol, path, query, hash) |
 | **Regex** | `https://github\.com/(notifications\|settings)` | Complex matching patterns |
 
 **Tip:** Use the built-in pattern tester to validate URL rules before saving.
 
-### Example: Gmail
+### Example: Gmail with Multiple Accounts
 
-Gmail URLs change as you navigate (`#inbox`, `#inbox/message-id`, `#compose`). Use **Starts With** mode with pattern `https://mail.google.com/mail/u/0/` to match all Gmail states.
+If you use multiple Gmail accounts (e.g., `/mail/u/0/`, `/mail/u/1/`, `/mail/u/2/`), use **Domain Match** mode with URL `https://mail.google.com/mail/u/1/#inbox`. This will match any tab on `mail.google.com`, regardless of which account or section you're in.
+
+**Domain Match** compares only the hostname, so:
+- ✅ Matches: `https://mail.google.com/mail/u/2/#sent`
+- ✅ Matches: `http://mail.google.com/`
+- ❌ Does not match: `https://www.google.com` (different subdomain)
+- ❌ Does not match: `https://google.com` (different domain)
+
+**Note:** Ports are ignored in domain matching (e.g., `localhost:3000` and `localhost:8080` both match as `localhost`).
 
 ## 🛠️ Development
 
