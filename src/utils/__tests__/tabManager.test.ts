@@ -1,6 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { browser } from 'wxt/browser';
+import { type Browser, browser } from 'wxt/browser';
 import { fakeBrowser } from 'wxt/testing';
+
+type TabsQueryFn = (
+  queryInfo: Browser.tabs.QueryInfo,
+) => Promise<Browser.tabs.Tab[]>;
 
 import { pinnedUrlSettingsStorage } from '../storage';
 import {
@@ -181,7 +185,7 @@ describe('restorePinnedTabs', () => {
   });
 
   it('should create new pinned tabs for missing URL', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://example2.com',
         pinned: true,
@@ -218,7 +222,7 @@ describe('restorePinnedTabs', () => {
   });
 
   it('should not create tabs if all URLs already exist', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://example1.com',
         pinned: true,
@@ -270,7 +274,7 @@ describe('restorePinnedTabs', () => {
   });
 
   it('should handle multiple pinned URLs', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://example1.com',
         pinned: true,
@@ -339,7 +343,7 @@ describe('restorePinnedTabs', () => {
   });
 
   it('should throw error for invalid pinned URL regex', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([]);
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([]);
 
     await pinnedUrlSettingsStorage.setValue([
       {
@@ -367,7 +371,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
   });
 
   it('should add new pinned tabs to settings', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://new.com',
         pinned: true,
@@ -397,7 +401,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
   });
 
   it('should not add duplicate entries', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://existing.com',
         pinned: true,
@@ -429,7 +433,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
 
   it('should handle tabs without URLs gracefully', async () => {
     // await pinnedUrlSettingsStorage.setValue([]);
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: undefined,
         pinned: true,
@@ -452,7 +456,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
   });
 
   it('should handle multiple pinned tabs', async () => {
-    vi.mocked(browser.tabs.query).mockResolvedValue([
+    vi.mocked(browser.tabs.query as TabsQueryFn).mockResolvedValue([
       {
         url: 'https://tab1.com',
         pinned: true,
