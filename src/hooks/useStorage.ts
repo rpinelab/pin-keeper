@@ -10,7 +10,7 @@ export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
     void storage.getValue().then((value) => {
       setStateRaw(value);
     });
-  }, [storage.getValue]);
+  }, [storage]);
 
   useEffect(() => {
     const unwatch = storage.watch((value) => {
@@ -20,13 +20,13 @@ export function useStorage<TValue, TMetadata extends Record<string, unknown>>(
     return () => {
       unwatch();
     };
-  }, [storage.watch]);
+  }, [storage]);
 
   const setState = useCallback(
     (value: TValue) => {
       void storage.setValue(value);
     },
-    [storage.setValue],
+    [storage],
   );
 
   return [state, setState] as const;
