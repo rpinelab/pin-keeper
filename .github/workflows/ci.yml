@@ -1,6 +1,6 @@
 name: CI
 
-'on':
+"on":
   push:
     branches:
       - main
@@ -31,14 +31,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
         with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
+          node-version-file: "package.json"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run lint
         run: pnpm run lint
+
+      - name: Type check
+        run: pnpm run typecheck
 
       - name: Build extension
         run: pnpm run build
