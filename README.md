@@ -30,26 +30,43 @@ It stores your pinned tab configuration locally and automatically brings it back
 
 Choose the matching mode that fits your needs:
 
-| Mode | Example | Use Case |
-|------|---------|----------|
+| Mode | Example URL | Use Case |
+|------|-------------|----------|
 | **Exact** | `https://github.com/notifications` | Static URLs that never change |
-| **Starts With** | `https://github.com/` | URLs with dynamic paths and query parameters |
-| **Domain Match** | `https://mail.google.com/mail/u/1/#inbox` | Match all URLs with the same hostname (ignores protocol, path, query, hash) |
-| **Regex** | `https://github\.com/(notifications\|settings)` | Complex matching patterns |
+| **Starts With** | `https://docs.google.com/spreadsheets/` | URLs sharing a common path prefix |
+| **Domain Match** | `https://mail.google.com/mail/u/0/#inbox` | Match all URLs with the same hostname (ignores protocol, path, query, hash) |
+| **Regex** | `https://trello\.com/b/(abc123\|def456)` | Complex matching patterns |
 
 **Tip:** Use the built-in pattern tester to validate URL rules before saving.
 
-### Example: Gmail with Multiple Accounts
+### Example 1: Gmail (Single Account)
 
-If you use multiple Gmail accounts (e.g., `/mail/u/0/`, `/mail/u/1/`, `/mail/u/2/`), use **Domain Match** mode with URL `https://mail.google.com/mail/u/1/#inbox`. This will match any tab on `mail.google.com`, regardless of which account or section you're in.
+If you use a single Gmail account, use **Domain Match** mode:
 
-**Domain Match** compares only the hostname, so:
-- ✅ Matches: `https://mail.google.com/mail/u/2/#sent`
-- ✅ Matches: `http://mail.google.com/`
+| Mode | URL | Match Pattern |
+|------|-----|---------------|
+| Domain Match | `https://mail.google.com/mail/u/0/#inbox` | _(empty)_ |
+
+When Match Pattern is empty, the URL is used for matching. On restore, the inbox page will open. Domain Match will then match any tab on `mail.google.com`, regardless of the path or section you're in.
+
+- ✅ Matches: `https://mail.google.com/mail/u/0/#inbox`
+- ✅ Matches: `https://mail.google.com/mail/u/0/#sent`
 - ❌ Does not match: `https://www.google.com` (different subdomain)
 - ❌ Does not match: `https://google.com` (different domain)
 
 **Note:** Ports are ignored in domain matching (e.g., `localhost:3000` and `localhost:8080` both match as `localhost`).
+
+### Example 2: Gmail (Multiple Accounts)
+
+If you use multiple Gmail accounts, use **Starts With** mode with a separate entry for each account:
+
+| Mode | URL | Match Pattern |
+|------|-----|---------------|
+| Starts With | `https://mail.google.com/mail/u/0/#inbox` | `https://mail.google.com/mail/u/0/` |
+| Starts With | `https://mail.google.com/mail/u/1/#inbox` | `https://mail.google.com/mail/u/1/` |
+| Starts With | `https://mail.google.com/mail/u/2/#inbox` | `https://mail.google.com/mail/u/2/` |
+
+Each entry restores its own pinned tab, so you can keep multiple Gmail accounts pinned side by side. The **URL** is the page opened on restore (e.g., inbox), while the **Match Pattern** matches any page within that account (e.g., sent, drafts).
 
 ## 🛠️ Development
 
