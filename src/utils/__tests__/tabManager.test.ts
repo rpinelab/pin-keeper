@@ -130,6 +130,37 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'http://192.168.1.2' })).toBe(false);
   });
 
+  it('should not match hostless URLs', () => {
+    // Regression test: hostless URLs (about:blank, file://, etc.)
+    // should not match each other even though they all have empty hostnames
+    const matcher = createTabUrlMatcher({
+      url: 'about:blank',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    // about:blank has empty hostname, should not match anything
+    expect(matcher({ url: 'about:blank' })).toBe(false);
+    expect(matcher({ url: 'file:///path/to/file.html' })).toBe(false);
+
+    // And shouldn't match regular URLs either
+    expect(matcher({ url: 'https://example.com' })).toBe(false);
+  });
+
+  it('should not match when pattern is a hostless URL', () => {
+    // Test with file:// URL which has empty hostname
+    const fileUrlMatcher = createTabUrlMatcher({
+      url: 'file:///path/to/file.html',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(fileUrlMatcher({ url: 'file:///path/to/file.html' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'file:///other/file.html' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'about:blank' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'https://example.com' })).toBe(false);
+  });
+
   it('should throw an error for invalid regex patterns', () => {
     expect(() =>
       createTabUrlMatcher({

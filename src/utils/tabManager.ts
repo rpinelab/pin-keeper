@@ -82,6 +82,10 @@ export function createTabUrlMatcher(
           return false;
         }
         const tabDomain = extractDomain(tab.url);
+        // Ensure both domains are non-empty to avoid matching hostless URLs
+        if (!tabDomain) {
+          return false;
+        }
         return tabDomain === targetDomain;
       };
     }
