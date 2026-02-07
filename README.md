@@ -93,13 +93,12 @@ pnpm install
 
 2. **Make changes**: The extension will automatically reload when you save files
 
-3. **Run tests, linting, and type checking**:
+3. **Run code quality checks**
 
    ```bash
    pnpm run lint
    pnpm run typecheck
    pnpm run test
-   pnpm run compile
    ```
 
 ### Packaging the extension
