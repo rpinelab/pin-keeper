@@ -47,6 +47,120 @@ describe('createTabUrlMatcher', () => {
     expect(matcher({ url: 'https://another.com/test' })).toBe(false);
   });
 
+  it('should match URLs by domain', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://mail.google.com/mail/u/1/#inbox',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(matcher({ url: 'https://mail.google.com/mail/u/1/#inbox' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'https://mail.google.com/mail/u/2/#sent' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'http://mail.google.com/' })).toBe(true);
+    expect(matcher({ url: 'https://www.google.com' })).toBe(false);
+    expect(matcher({ url: 'https://google.com' })).toBe(false);
+  });
+
+  it('should match domains using custom pattern', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://mail.google.com',
+      matchType: 'domain',
+      matchPattern: 'example.com',
+    });
+
+    expect(matcher({ url: 'https://example.com' })).toBe(true);
+    expect(matcher({ url: 'https://example.com/page' })).toBe(true);
+    expect(matcher({ url: 'http://example.com/test?id=123#anchor' })).toBe(
+      true,
+    );
+    expect(matcher({ url: 'https://subdomain.example.com' })).toBe(false);
+    expect(matcher({ url: 'https://mail.google.com' })).toBe(false);
+  });
+
+  it('should handle domains with ports', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'http://localhost:3000',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    // Domain matching ignores ports - only compares hostname
+    expect(matcher({ url: 'http://localhost:3000' })).toBe(true);
+    expect(matcher({ url: 'http://localhost:3000/page' })).toBe(true);
+    expect(matcher({ url: 'https://localhost:3000' })).toBe(true);
+    // Different port but same domain (localhost) - still matches
+    expect(matcher({ url: 'http://localhost:8080' })).toBe(true);
+  });
+
+  it('should handle invalid URLs in domain match', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'https://example.com',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(matcher({ url: 'not-a-valid-url' })).toBe(false);
+    expect(matcher({ url: '' })).toBe(false);
+  });
+
+  it('should handle invalid pattern in domain match', () => {
+    const matcher = createTabUrlMatcher({
+      url: '',
+      matchType: 'domain',
+      matchPattern: 'not-a-valid-url',
+    });
+
+    expect(matcher({ url: 'https://example.com' })).toBe(false);
+  });
+
+  it('should support IPv4 addresses in bare domain patterns', () => {
+    const matcher = createTabUrlMatcher({
+      url: 'http://192.168.1.1',
+      matchType: 'domain',
+      matchPattern: '192.168.1.1',
+    });
+
+    // IPv4 addresses should be supported
+    expect(matcher({ url: 'http://192.168.1.1' })).toBe(true);
+    expect(matcher({ url: 'http://192.168.1.1:8080' })).toBe(true);
+    expect(matcher({ url: 'http://192.168.1.2' })).toBe(false);
+  });
+
+  it('should not match hostless URLs', () => {
+    // Regression test: hostless URLs (about:blank, file://, etc.)
+    // should not match each other even though they all have empty hostnames
+    const matcher = createTabUrlMatcher({
+      url: 'about:blank',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    // about:blank has empty hostname, should not match anything
+    expect(matcher({ url: 'about:blank' })).toBe(false);
+    expect(matcher({ url: 'file:///path/to/file.html' })).toBe(false);
+
+    // And shouldn't match regular URLs either
+    expect(matcher({ url: 'https://example.com' })).toBe(false);
+  });
+
+  it('should not match when pattern is a hostless URL', () => {
+    // Test with file:// URL which has empty hostname
+    const fileUrlMatcher = createTabUrlMatcher({
+      url: 'file:///path/to/file.html',
+      matchType: 'domain',
+      matchPattern: '',
+    });
+
+    expect(fileUrlMatcher({ url: 'file:///path/to/file.html' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'file:///other/file.html' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'about:blank' })).toBe(false);
+    expect(fileUrlMatcher({ url: 'https://example.com' })).toBe(false);
+  });
+
   it('should throw an error for invalid regex patterns', () => {
     expect(() =>
       createTabUrlMatcher({

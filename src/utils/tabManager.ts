@@ -3,6 +3,27 @@ import { type Browser, browser } from 'wxt/browser';
 
 import { type PinnedUrlSetting, pinnedUrlSettingsStorage } from './storage';
 
+// Helper function to extract domain (hostname) from URL
+// Supports both full URLs (https://example.com/path) and bare domain patterns (example.com)
+function extractDomain(urlString: string): string | null {
+  try {
+    // Try parsing as a full URL first
+    const url = new URL(urlString);
+    return url.hostname;
+  } catch {
+    // Fallback: attempt to parse as a bare domain pattern (e.g., "example.com" or "192.168.1.1")
+    // This allows users to specify domain-only patterns in the matchPattern field
+    // The URL API validation in the try-catch block below handles all validation including IPv4 addresses
+    try {
+      const testUrl = new URL(`https://${urlString}`);
+      return testUrl.hostname;
+    } catch {
+      // Invalid domain format
+      return null;
+    }
+  }
+}
+
 export interface RestorePinnedTabsOptions {
   showNotification?: boolean;
 }
@@ -52,6 +73,21 @@ export function createTabUrlMatcher(
     case 'startsWith': {
       const pattern = pinnedUrlConfig.matchPattern || pinnedUrlConfig.url;
       return (tab) => tab.url?.startsWith(pattern) ?? false;
+    }
+    case 'domain': {
+      const pattern = pinnedUrlConfig.matchPattern || pinnedUrlConfig.url;
+      const targetDomain = extractDomain(pattern);
+      return (tab) => {
+        if (!tab.url || !targetDomain) {
+          return false;
+        }
+        const tabDomain = extractDomain(tab.url);
+        // Ensure both domains are non-empty to avoid matching hostless URLs
+        if (!tabDomain) {
+          return false;
+        }
+        return tabDomain === targetDomain;
+      };
     }
     case 'regex': {
       try {
