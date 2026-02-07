@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.7.0](https://github.com/rpinelab/pin-keeper/compare/v1.6.1...v1.7.0) (2026-02-07)
+
+
+### Features
+
+* add domain-based URL matching mode ([#279](https://github.com/rpinelab/pin-keeper/issues/279)) ([6d78e9f](https://github.com/rpinelab/pin-keeper/commit/6d78e9ff9dff110755753a6e363dd1f88819355e))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v0.563.0 ([#294](https://github.com/rpinelab/pin-keeper/issues/294)) ([f553422](https://github.com/rpinelab/pin-keeper/commit/f5534221f577907739ee9b4ba956e4bd117198cf))
+* **deps:** update react monorepo ([#293](https://github.com/rpinelab/pin-keeper/issues/293)) ([8d7bbde](https://github.com/rpinelab/pin-keeper/commit/8d7bbde7e0f97ddc6b31e01da16e388a5eabe292))
+
 ## [1.6.1](https://github.com/rpinelab/pin-keeper/compare/v1.6.0...v1.6.1) (2026-01-10)
 
 
