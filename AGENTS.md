@@ -36,8 +36,8 @@ See `package.json` for specific version requirements (`engines` and `packageMana
 
 - `pnpm run test` - Run tests with Vitest
 - `pnpm run lint` - Check linting issues
+- `pnpm run typecheck` - Type-check with TypeScript
 - `pnpm run check` - Auto-fix linting and formatting issues
-- `pnpm run compile` - Type-check without emitting files
 
 ## Architecture
 

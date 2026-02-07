@@ -78,7 +78,7 @@ pnpm install
 | `pnpm run zip:firefox` | Package Firefox extension |
 | `pnpm run lint` | Run Biome linter |
 | `pnpm run check` | Run Biome check and auto-fix |
-| `pnpm run compile` | Type-check with TypeScript |
+| `pnpm run typecheck` | Type-check with TypeScript |
 | `pnpm run test` | Run tests with Vitest |
 
 ### Development Workflow
@@ -93,12 +93,12 @@ pnpm install
 
 2. **Make changes**: The extension will automatically reload when you save files
 
-3. **Run tests and linting**:
+3. **Run code quality checks**
 
    ```bash
-   pnpm run test
    pnpm run lint
-   pnpm run compile
+   pnpm run typecheck
+   pnpm run test
    ```
 
 ### Packaging the extension

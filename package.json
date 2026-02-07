@@ -12,9 +12,9 @@
     "build:firefox": "wxt build -b firefox",
     "lint": "biome lint .",
     "check": "biome check --write .",
+    "typecheck": "tsc --noEmit",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
     "test": "vitest"
   },
