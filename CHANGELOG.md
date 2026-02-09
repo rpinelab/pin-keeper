@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/rpinelab/pin-keeper/compare/v1.7.0...v1.8.0) (2026-02-09)
+
+
+### Features
+
+* update context menu title and ensure clean initialization ([#302](https://github.com/rpinelab/pin-keeper/issues/302)) ([de848d6](https://github.com/rpinelab/pin-keeper/commit/de848d680dbfdbff8096c746235764b5471f2b2f))
+
 ## [1.7.0](https://github.com/rpinelab/pin-keeper/compare/v1.6.1...v1.7.0) (2026-02-07)
 
 
