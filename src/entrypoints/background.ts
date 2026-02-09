@@ -53,29 +53,29 @@ export default defineBackground(() => {
       if (details.reason === 'install' && details.temporary === true) {
         void handleStartupTabRestore();
       }
-
-      // Create context menu item on extension button
-      browser.contextMenus.create(
-        {
-          id: CONTEXT_MENU_OPEN_OPTIONS,
-          title: 'Options',
-          contexts: [
-            import.meta.env.MANIFEST_VERSION === 2
-              ? 'browser_action'
-              : 'action',
-          ],
-        },
-        () => {
-          if (browser.runtime.lastError) {
-            console.error(
-              'Pin Keeper: Context menu creation failed:',
-              browser.runtime.lastError,
-            );
-          }
-        },
-      );
     },
   );
+
+  browser.contextMenus.removeAll().then(() => {
+    // Create context menu item on extension button
+    browser.contextMenus.create(
+      {
+        id: CONTEXT_MENU_OPEN_OPTIONS,
+        title: 'Manage Pinned Tabs...',
+        contexts: [
+          import.meta.env.MANIFEST_VERSION === 2 ? 'browser_action' : 'action',
+        ],
+      },
+      () => {
+        if (browser.runtime.lastError) {
+          console.error(
+            'Pin Keeper: Context menu creation failed:',
+            browser.runtime.lastError,
+          );
+        }
+      },
+    );
+  });
 
   // Handle context menu clicks
   browser.contextMenus.onClicked.addListener((info) => {
