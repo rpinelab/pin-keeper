@@ -54,7 +54,7 @@
     "vitest": "4.0.18",
     "wxt": "0.20.15"
   },
-  "packageManager": "pnpm@10.29.2",
+  "packageManager": "pnpm@10.29.3",
   "engines": {
     "node": ">=22.0.0 <23.0.0"
   },
