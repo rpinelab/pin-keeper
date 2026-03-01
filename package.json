@@ -3,7 +3,7 @@
   "description": "Automatically manage and restore pinned tabs with flexible URL matching rules",
   "license": "MIT",
   "private": true,
-  "version": "1.8.0",
+  "version": "1.8.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
-    "@types/chrome": "0.1.37",
+    "@types/chrome": "0.1.36",
     "@types/node": "24.9.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
