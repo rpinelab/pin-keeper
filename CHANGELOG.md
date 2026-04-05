@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.8.2](https://github.com/rpinelab/pin-keeper/compare/v1.8.1...v1.8.2) (2026-04-05)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#344](https://github.com/rpinelab/pin-keeper/issues/344)) ([18b3d84](https://github.com/rpinelab/pin-keeper/commit/18b3d84088d8cedb9b286acacf9058caf4e7c9cd))
+* **deps:** lock file maintenance ([#355](https://github.com/rpinelab/pin-keeper/issues/355)) ([bd75f01](https://github.com/rpinelab/pin-keeper/commit/bd75f0177ddf5571a8a406c0510654fb601945f2))
+* **deps:** update dependency lucide-react to v1 ([#359](https://github.com/rpinelab/pin-keeper/issues/359)) ([bd521e7](https://github.com/rpinelab/pin-keeper/commit/bd521e7d90988327e8998efe322fcece13a05a40))
+* **deps:** update dependency nanoid to v5.1.7 ([#350](https://github.com/rpinelab/pin-keeper/issues/350)) ([391ecd8](https://github.com/rpinelab/pin-keeper/commit/391ecd835b6d1e5850faa7d5599b9cf5168ccb3c))
+* **deps:** update tailwindcss monorepo to v4.2.2 ([#354](https://github.com/rpinelab/pin-keeper/issues/354)) ([65f8208](https://github.com/rpinelab/pin-keeper/commit/65f8208e730fa87ea910ffc66a3ce2d56904faac))
+
 ## [1.8.1](https://github.com/rpinelab/pin-keeper/compare/v1.8.0...v1.8.1) (2026-03-15)
 
 
