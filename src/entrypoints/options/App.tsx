@@ -1,21 +1,9 @@
-import {
-  closestCenter,
-  DndContext,
-  type DragEndEvent,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import {
-  restrictToParentElement,
-  restrictToVerticalAxis,
-} from '@dnd-kit/modifiers';
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
+import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers';
+import { RestrictToElement } from '@dnd-kit/dom/modifiers';
+import { DragDropProvider, type DragEndEvent } from '@dnd-kit/react';
+import { isSortable } from '@dnd-kit/react/sortable';
 import { ChevronDown } from 'lucide-react';
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Collapsible,
@@ -42,9 +30,7 @@ function App() {
   const [autoRestoreEnabled, updateAutoRestoreEnabled] =
     useAutoRestoreEnabled();
   const [autoRestoreDelay, updateAutoRestoreDelay] = useAutoRestoreDelay();
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
-  );
+  const ulRef = useRef<HTMLUListElement>(null);
 
   const onToggleAutoRestoreEnabled = (value: boolean) => {
     updateAutoRestoreEnabled(value);
@@ -92,11 +78,26 @@ function App() {
     }
   }, [addCurrentTabsState]);
 
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (over !== null && active.id !== over.id) {
-      void swapUrlInStorage(active.id as string, over.id as string);
+  const handleDragEnd: DragEndEvent = (event) => {
+    const { operation, canceled } = event;
+
+    if (canceled) {
+      return;
     }
+
+    const { source } = operation;
+
+    if (!isSortable(source)) {
+      return;
+    }
+
+    const { initialIndex, index } = source;
+
+    if (initialIndex === index) {
+      return;
+    }
+
+    void swapUrlInStorage(initialIndex, index);
   };
 
   return (
@@ -187,46 +188,46 @@ function App() {
             <EditPinnedUrlForm action={editUrl} submitText='Add' />
           </CollapsibleContent>
         </Collapsible>
-        <DndContext
-          sensors={sensors}
-          collisionDetection={closestCenter}
+        <DragDropProvider
           onDragEnd={handleDragEnd}
-          modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+          modifiers={(defaults) => [
+            ...defaults,
+            RestrictToVerticalAxis,
+            RestrictToElement.configure({
+              element: ulRef.current,
+            }),
+          ]}
         >
-          <SortableContext
-            items={pinnedUrlSettings}
-            strategy={verticalListSortingStrategy}
-          >
-            <ul className='flex flex-col gap-3'>
-              {pinnedUrlSettings.length === 0 && (
-                <li className='text-center py-8 text-muted-foreground text-sm'>
-                  No tabs configured yet
-                </li>
-              )}
-              {pinnedUrlSettings.map((pinnedUrl) =>
-                editingId === pinnedUrl.id ? (
-                  <li key={pinnedUrl.id}>
-                    <EditPinnedUrlForm
-                      cancelEdit={() => {
-                        setEditingId(null);
-                      }}
-                      action={editUrl}
-                      initialValue={pinnedUrl}
-                      submitText='Save'
-                    />
-                  </li>
-                ) : (
-                  <SortablePinnedUrlItem
-                    key={pinnedUrl.id}
-                    pinnedUrl={pinnedUrl}
-                    editUrl={setEditingId}
-                    deleteUrl={deleteUrl}
+          <ul ref={ulRef} className='flex flex-col gap-3'>
+            {pinnedUrlSettings.length === 0 && (
+              <li className='text-center py-8 text-muted-foreground text-sm'>
+                No tabs configured yet
+              </li>
+            )}
+            {pinnedUrlSettings.map((pinnedUrl, index) =>
+              editingId === pinnedUrl.id ? (
+                <li key={pinnedUrl.id}>
+                  <EditPinnedUrlForm
+                    cancelEdit={() => {
+                      setEditingId(null);
+                    }}
+                    action={editUrl}
+                    initialValue={pinnedUrl}
+                    submitText='Save'
                   />
-                ),
-              )}
-            </ul>
-          </SortableContext>
-        </DndContext>
+                </li>
+              ) : (
+                <SortablePinnedUrlItem
+                  key={pinnedUrl.id}
+                  index={index}
+                  pinnedUrl={pinnedUrl}
+                  editUrl={setEditingId}
+                  deleteUrl={deleteUrl}
+                />
+              ),
+            )}
+          </ul>
+        </DragDropProvider>
       </section>
     </main>
   );

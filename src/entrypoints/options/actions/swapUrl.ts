@@ -1,21 +1,22 @@
-import { arrayMove } from '@dnd-kit/sortable';
-
 import { pinnedUrlSettingsStorage } from '@/utils/storage';
 
 export async function swapUrlInStorage(
-  activeId: string,
-  overId: string,
+  initialIndex: number,
+  newIndex: number,
 ): Promise<void> {
   const pinnedUrls = await pinnedUrlSettingsStorage.getValue();
 
-  const oldIndex = pinnedUrls.findIndex((item) => item.id === activeId);
-  const newIndex = pinnedUrls.findIndex((item) => item.id === overId);
-
-  if (oldIndex === -1 || newIndex === -1) {
-    throw new Error('Invalid IDs provided for swapping.');
+  if (
+    initialIndex < 0 ||
+    initialIndex >= pinnedUrls.length ||
+    newIndex < 0 ||
+    newIndex >= pinnedUrls.length
+  ) {
+    throw new Error('Invalid indices provided for swapping.');
   }
 
-  const newOrder = arrayMove(pinnedUrls, oldIndex, newIndex);
+  const [movedUrl] = pinnedUrls.splice(initialIndex, 1);
+  pinnedUrls.splice(newIndex, 0, movedUrl);
 
-  await pinnedUrlSettingsStorage.setValue(newOrder);
+  await pinnedUrlSettingsStorage.setValue(pinnedUrls);
 }
