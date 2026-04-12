@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/rpinelab/pin-keeper/compare/v1.8.2...v1.8.3) (2026-04-12)
+
+
+### Bug Fixes
+
+* **deps:** update react monorepo to v19.2.5 ([#370](https://github.com/rpinelab/pin-keeper/issues/370)) ([b0ecb70](https://github.com/rpinelab/pin-keeper/commit/b0ecb7001d6da1d531a904d42633b5f84c4d9d79))
+
 ## [1.8.2](https://github.com/rpinelab/pin-keeper/compare/v1.8.1...v1.8.2) (2026-04-05)
 
 
