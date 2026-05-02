@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.4](https://github.com/rpinelab/pin-keeper/compare/v1.8.3...v1.8.4) (2026-05-02)
+
+
+### Bug Fixes
+
+* **deps:** update dnd-kit monorepo to v0.4.0 ([#379](https://github.com/rpinelab/pin-keeper/issues/379)) ([b2c1476](https://github.com/rpinelab/pin-keeper/commit/b2c1476b42effc01317922a7710853c11abd435c))
+
 ## [1.8.3](https://github.com/rpinelab/pin-keeper/compare/v1.8.2...v1.8.3) (2026-05-02)
 
 
