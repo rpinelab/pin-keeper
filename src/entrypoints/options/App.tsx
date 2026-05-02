@@ -1,6 +1,6 @@
 import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers';
 import { RestrictToElement } from '@dnd-kit/dom/modifiers';
-import { DragDropProvider, type DragEndEvent } from '@dnd-kit/react';
+import { DragDropProvider } from '@dnd-kit/react';
 import { isSortable } from '@dnd-kit/react/sortable';
 import { ChevronDown } from 'lucide-react';
 import { useActionState, useEffect, useRef, useState } from 'react';
@@ -77,28 +77,6 @@ function App() {
       window.alert(addCurrentTabsState.error.message);
     }
   }, [addCurrentTabsState]);
-
-  const handleDragEnd: DragEndEvent = (event) => {
-    const { operation, canceled } = event;
-
-    if (canceled) {
-      return;
-    }
-
-    const { source } = operation;
-
-    if (!isSortable(source)) {
-      return;
-    }
-
-    const { initialIndex, index } = source;
-
-    if (initialIndex === index) {
-      return;
-    }
-
-    void swapUrlInStorage(initialIndex, index);
-  };
 
   return (
     <main className='flex flex-col gap-8 bg-background min-h-screen p-8 min-w-xl max-w-4xl mx-auto select-none'>
@@ -189,7 +167,27 @@ function App() {
           </CollapsibleContent>
         </Collapsible>
         <DragDropProvider
-          onDragEnd={handleDragEnd}
+          onDragEnd={(event) => {
+            const { operation, canceled } = event;
+
+            if (canceled) {
+              return;
+            }
+
+            const { source } = operation;
+
+            if (!isSortable(source)) {
+              return;
+            }
+
+            const { initialIndex, index } = source;
+
+            if (initialIndex === index) {
+              return;
+            }
+
+            void swapUrlInStorage(initialIndex, index);
+          }}
           modifiers={(defaults) => [
             ...defaults,
             RestrictToVerticalAxis,
