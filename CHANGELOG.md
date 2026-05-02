@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.8.3](https://github.com/rpinelab/pin-keeper/compare/v1.8.2...v1.8.3) (2026-05-02)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#375](https://github.com/rpinelab/pin-keeper/issues/375)) ([5a93976](https://github.com/rpinelab/pin-keeper/commit/5a93976fe9700971e6f6139417931f434a0ed340))
+* **deps:** lock file maintenance ([#383](https://github.com/rpinelab/pin-keeper/issues/383)) ([8b3a047](https://github.com/rpinelab/pin-keeper/commit/8b3a047d8c5bb104e28f4176925454e281f1bb69))
+* **deps:** lock file maintenance ([#393](https://github.com/rpinelab/pin-keeper/issues/393)) ([6615a7a](https://github.com/rpinelab/pin-keeper/commit/6615a7a8b4c8d90b36833160c6c40fb7550b212a))
+* **deps:** update dependency lucide-react to v1.11.0 ([#395](https://github.com/rpinelab/pin-keeper/issues/395)) ([2914970](https://github.com/rpinelab/pin-keeper/commit/291497052f2542478a8138ed0500868f0c58ad8d))
+* **deps:** update dependency lucide-react to v1.12.0 ([#396](https://github.com/rpinelab/pin-keeper/issues/396)) ([47f908b](https://github.com/rpinelab/pin-keeper/commit/47f908be79f7184470fe55c964b4df103369efc6))
+* **deps:** update dependency lucide-react to v1.14.0 ([#397](https://github.com/rpinelab/pin-keeper/issues/397)) ([b1e1917](https://github.com/rpinelab/pin-keeper/commit/b1e1917975a1083d598666040b1c8e5c0d539cce))
+* **deps:** update dependency lucide-react to v1.8.0 ([#374](https://github.com/rpinelab/pin-keeper/issues/374)) ([1dd4913](https://github.com/rpinelab/pin-keeper/commit/1dd4913ce37c1dd84eeac1b067780de8996b0dc0))
+* **deps:** update dependency nanoid to v5.1.9 ([#381](https://github.com/rpinelab/pin-keeper/issues/381)) ([34e058d](https://github.com/rpinelab/pin-keeper/commit/34e058d10dace52bbb01b111942f221a2d0e0367))
+* **deps:** update react monorepo to v19.2.5 ([#370](https://github.com/rpinelab/pin-keeper/issues/370)) ([b0ecb70](https://github.com/rpinelab/pin-keeper/commit/b0ecb7001d6da1d531a904d42633b5f84c4d9d79))
+* **deps:** update tailwindcss monorepo to v4.2.4 ([#388](https://github.com/rpinelab/pin-keeper/issues/388)) ([89806c9](https://github.com/rpinelab/pin-keeper/commit/89806c91604e48f5e782dd7edca42addd7d1483a))
+
 ## [1.8.2](https://github.com/rpinelab/pin-keeper/compare/v1.8.1...v1.8.2) (2026-04-05)
 
 
