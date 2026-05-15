@@ -52,7 +52,7 @@
     "typescript": "6.0.3",
     "vite": "8.0.12",
     "vitest": "4.1.6",
-    "wxt": "0.20.25"
+    "wxt": "0.20.26"
   },
   "packageManager": "pnpm@10.33.4",
   "engines": {
