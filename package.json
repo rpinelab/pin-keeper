@@ -3,7 +3,7 @@
   "description": "Automatically manage and restore pinned tabs with flexible URL matching rules",
   "license": "MIT",
   "private": true,
-  "version": "1.8.3",
+  "version": "1.8.4",
   "type": "module",
   "scripts": {
     "dev": "wxt",

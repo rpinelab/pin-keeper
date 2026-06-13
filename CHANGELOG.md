@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.8.4](https://github.com/rpinelab/pin-keeper/compare/v1.8.3...v1.8.4) (2026-06-13)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#401](https://github.com/rpinelab/pin-keeper/issues/401)) ([687af10](https://github.com/rpinelab/pin-keeper/commit/687af108a51c567585b2ad0bb021f9a389feb639))
+* **deps:** lock file maintenance ([#410](https://github.com/rpinelab/pin-keeper/issues/410)) ([156a245](https://github.com/rpinelab/pin-keeper/commit/156a245fad45728aac8294483afa3e9f30254f75))
+* **deps:** lock file maintenance ([#420](https://github.com/rpinelab/pin-keeper/issues/420)) ([6dc2831](https://github.com/rpinelab/pin-keeper/commit/6dc2831b00a57f88fe665b87a0f6235d77aa72c7))
+* **deps:** lock file maintenance ([#426](https://github.com/rpinelab/pin-keeper/issues/426)) ([d398395](https://github.com/rpinelab/pin-keeper/commit/d3983956ea6adcd91a865f5338d61dcf16142950))
+* **deps:** lock file maintenance ([#431](https://github.com/rpinelab/pin-keeper/issues/431)) ([bf2be49](https://github.com/rpinelab/pin-keeper/commit/bf2be49c1c35fbd93dd74e7b8f1dc5072c96254f))
+* **deps:** lock file maintenance ([#438](https://github.com/rpinelab/pin-keeper/issues/438)) ([cbf1494](https://github.com/rpinelab/pin-keeper/commit/cbf1494599265ba4e54ee0690648fe187e27cdec))
+* **deps:** update dependency lucide-react to v1.16.0 ([#419](https://github.com/rpinelab/pin-keeper/issues/419)) ([a4841e3](https://github.com/rpinelab/pin-keeper/commit/a4841e373f15db0538bc834bc8056c65d26bb9e1))
+* **deps:** update dependency lucide-react to v1.17.0 ([#430](https://github.com/rpinelab/pin-keeper/issues/430)) ([286c8bc](https://github.com/rpinelab/pin-keeper/commit/286c8bc2b664d72ada98f79cf56e8b3211da1510))
+* **deps:** update dependency nanoid to v5.1.11 ([#404](https://github.com/rpinelab/pin-keeper/issues/404)) ([455b325](https://github.com/rpinelab/pin-keeper/commit/455b325a8a995f0c31ef3ef5771bfe28d03856a7))
+* **deps:** update dependency tailwind-merge to v3.6.0 ([#416](https://github.com/rpinelab/pin-keeper/issues/416)) ([91443c0](https://github.com/rpinelab/pin-keeper/commit/91443c0b1c857b4507e8924044d27868ac577320))
+* **deps:** update dnd-kit monorepo to v0.4.0 ([#379](https://github.com/rpinelab/pin-keeper/issues/379)) ([b2c1476](https://github.com/rpinelab/pin-keeper/commit/b2c1476b42effc01317922a7710853c11abd435c))
+* **deps:** update radix-ui-primitives monorepo ([#442](https://github.com/rpinelab/pin-keeper/issues/442)) ([43aa61c](https://github.com/rpinelab/pin-keeper/commit/43aa61c57676236d47cdf4b5f4c781975c9a7955))
+* **deps:** update react monorepo ([#436](https://github.com/rpinelab/pin-keeper/issues/436)) ([831d265](https://github.com/rpinelab/pin-keeper/commit/831d265f09f0c2d7b13e4e30d0c92f6d97ae1d40))
+* **deps:** update react monorepo to v19.2.6 ([#407](https://github.com/rpinelab/pin-keeper/issues/407)) ([41e4439](https://github.com/rpinelab/pin-keeper/commit/41e44391ce325d7c88d9d3ab444a7c20e540fc55))
+* **deps:** update tailwindcss monorepo to v4.3.0 ([#417](https://github.com/rpinelab/pin-keeper/issues/417)) ([d89a5dc](https://github.com/rpinelab/pin-keeper/commit/d89a5dcebda0da9ec8bd460a6b2b152aa25459a0))
+
 ## [1.8.3](https://github.com/rpinelab/pin-keeper/compare/v1.8.2...v1.8.3) (2026-05-02)
 
 
