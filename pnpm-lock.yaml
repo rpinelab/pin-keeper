@@ -51,8 +51,8 @@ importers:
         specifier: 1.21.0
         version: 1.21.0(react@19.2.7)
       nanoid:
-        specifier: 5.1.11
-        version: 5.1.11
+        specifier: 5.1.15
+        version: 5.1.15
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -2084,8 +2084,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.1.11:
-    resolution: {integrity: sha512-v+KEsUv2ps74PaSKv0gHTxTCgMXOIfBEbaqa6w6ISIGC7ZsvHN4N9oJ8d4cmf0n5oTzQz2SLmThbQWhjd/8eKg==}
+  nanoid@5.1.15:
+    resolution: {integrity: sha512-kBg3RpGtIe+RpTbyXwoI6pk5yD7KUiI3sygUqgeBMRst42KmhB4RZC7eiO9Wa1HIpaCCtpE2DJ6OI4Wi5ebwFw==}
     engines: {node: ^18 || >=20}
     hasBin: true
 
@@ -4436,7 +4436,7 @@ snapshots:
 
   nanoid@3.3.14: {}
 
-  nanoid@5.1.11: {}
+  nanoid@5.1.15: {}
 
   nanospinner@1.2.2:
     dependencies:
