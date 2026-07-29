@@ -1,0 +1,8 @@
+overrides:
+  vite: $vite
+allowBuilds:
+  dtrace-provider: true
+  esbuild: true
+  lefthook: true
+  sharp: true
+  spawn-sync: true
