@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.5](https://github.com/rpinelab/pin-keeper/compare/v1.8.4...v1.8.5) (2026-08-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lucide-react to v1.27.0 ([#498](https://github.com/rpinelab/pin-keeper/issues/498)) ([5712c44](https://github.com/rpinelab/pin-keeper/commit/5712c4433947d27db75bbcefb32783b8635fbeae))
+* **deps:** update dependency lucide-react to v1.28.0 ([#501](https://github.com/rpinelab/pin-keeper/issues/501)) ([d0d5f8d](https://github.com/rpinelab/pin-keeper/commit/d0d5f8df7c518de0cf077aabefeba3bc5f77cf92))
+* **deps:** update radix-ui-primitives monorepo ([#496](https://github.com/rpinelab/pin-keeper/issues/496)) ([5e87d66](https://github.com/rpinelab/pin-keeper/commit/5e87d66a4a79469374a8b2d977979a28330d32e8))
+
 ## [1.8.4](https://github.com/rpinelab/pin-keeper/compare/v1.8.3...v1.8.4) (2026-07-29)
 
 
