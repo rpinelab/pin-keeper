@@ -199,6 +199,7 @@ describe('restorePinnedTabs', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
     vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
@@ -236,6 +237,7 @@ describe('restorePinnedTabs', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
       {
         url: 'https://example2.com/test',
@@ -250,6 +252,7 @@ describe('restorePinnedTabs', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
 
@@ -288,6 +291,7 @@ describe('restorePinnedTabs', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
       {
         url: 'https://example2.com',
@@ -302,6 +306,7 @@ describe('restorePinnedTabs', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
     vi.mocked(browser.tabs.create).mockResolvedValue(undefined);
@@ -385,6 +390,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
 
@@ -415,6 +421,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
     await pinnedUrlSettingsStorage.setValue([
@@ -447,6 +454,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
 
@@ -470,6 +478,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
       {
         url: 'https://tab2.com',
@@ -484,6 +493,7 @@ describe('addCurrentPinnedTabsToSettings', () => {
         discarded: false,
         autoDiscardable: false,
         groupId: 0,
+        lastAccessed: 0,
       },
     ]);
     await pinnedUrlSettingsStorage.setValue([
