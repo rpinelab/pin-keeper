@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { type Browser, browser } from 'wxt/browser';
-import { fakeBrowser } from 'wxt/testing';
+import { fakeBrowser } from 'wxt/testing/fake-browser';
 
 type TabsQueryFn = (
   queryInfo: Browser.tabs.QueryInfo,

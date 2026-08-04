@@ -16,6 +16,9 @@ export async function swapUrlInStorage(
   }
 
   const [movedUrl] = pinnedUrls.splice(initialIndex, 1);
+  if (movedUrl === undefined) {
+    throw new Error('Invalid indices provided for swapping.');
+  }
   pinnedUrls.splice(newIndex, 0, movedUrl);
 
   await pinnedUrlSettingsStorage.setValue(pinnedUrls);
