@@ -1,5 +1,3 @@
-overrides:
-  vite: $vite
 allowBuilds:
   dtrace-provider: true
   esbuild: true
