@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.6](https://github.com/rpinelab/pin-keeper/compare/v1.8.5...v1.8.6) (2026-08-07)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#503](https://github.com/rpinelab/pin-keeper/issues/503)) ([a7851e9](https://github.com/rpinelab/pin-keeper/commit/a7851e92e5320cc12f9184f5eb203dc50916d66d))
+* **deps:** update dependency nanoid to v6.0.1 ([#512](https://github.com/rpinelab/pin-keeper/issues/512)) ([53850bb](https://github.com/rpinelab/pin-keeper/commit/53850bb1ecc6ddf0c211e6f7fe477c09929d308b))
+
 ## [1.8.5](https://github.com/rpinelab/pin-keeper/compare/v1.8.4...v1.8.5) (2026-08-04)
 
 
