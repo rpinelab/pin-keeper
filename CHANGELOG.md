@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.6](https://github.com/rpinelab/pin-keeper/compare/v1.8.5...v1.8.6) (2026-08-09)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#503](https://github.com/rpinelab/pin-keeper/issues/503)) ([a7851e9](https://github.com/rpinelab/pin-keeper/commit/a7851e92e5320cc12f9184f5eb203dc50916d66d))
+* **deps:** lock file maintenance ([#516](https://github.com/rpinelab/pin-keeper/issues/516)) ([8dbb3c0](https://github.com/rpinelab/pin-keeper/commit/8dbb3c09e6bf7d88fb5b1ff8b8b271a88059a5d1))
+* **deps:** update dependency lucide-react to v1.29.0 ([#515](https://github.com/rpinelab/pin-keeper/issues/515)) ([4b26505](https://github.com/rpinelab/pin-keeper/commit/4b265050fcc665cf466200ba9bdb48bb072ba289))
+* **deps:** update dependency nanoid to v6.0.1 ([#512](https://github.com/rpinelab/pin-keeper/issues/512)) ([53850bb](https://github.com/rpinelab/pin-keeper/commit/53850bb1ecc6ddf0c211e6f7fe477c09929d308b))
+
 ## [1.8.5](https://github.com/rpinelab/pin-keeper/compare/v1.8.4...v1.8.5) (2026-08-04)
 
 
