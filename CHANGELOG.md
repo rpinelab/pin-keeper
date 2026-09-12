@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.8.7](https://github.com/rpinelab/pin-keeper/compare/v1.8.6...v1.8.7) (2026-09-12)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([#523](https://github.com/rpinelab/pin-keeper/issues/523)) ([e341716](https://github.com/rpinelab/pin-keeper/commit/e3417160c4a1fa262307c02cdd4824cf37aad262))
+* **deps:** lock file maintenance ([#531](https://github.com/rpinelab/pin-keeper/issues/531)) ([8c9fdd6](https://github.com/rpinelab/pin-keeper/commit/8c9fdd66166f8e3fa8756acaaad088f9dd5b91ac))
+* **deps:** lock file maintenance ([#537](https://github.com/rpinelab/pin-keeper/issues/537)) ([9ee6e62](https://github.com/rpinelab/pin-keeper/commit/9ee6e62efce2f27364ce2f0e1bc312e14dde24ae))
+* **deps:** lock file maintenance ([#548](https://github.com/rpinelab/pin-keeper/issues/548)) ([5b674b5](https://github.com/rpinelab/pin-keeper/commit/5b674b58acc0f64d2a18df0066a65d625f3fe4b5))
+* **deps:** update dependency lucide-react to v1.31.0 ([#521](https://github.com/rpinelab/pin-keeper/issues/521)) ([1285a3c](https://github.com/rpinelab/pin-keeper/commit/1285a3c3922e5075bed9f1a1f1fd757c58899284))
+* **deps:** update dependency lucide-react to v1.32.0 ([#528](https://github.com/rpinelab/pin-keeper/issues/528)) ([9e69291](https://github.com/rpinelab/pin-keeper/commit/9e6929127e99a01586a0c4424c688e00548baa18))
+* **deps:** update dependency lucide-react to v1.33.0 ([#529](https://github.com/rpinelab/pin-keeper/issues/529)) ([ca7b87e](https://github.com/rpinelab/pin-keeper/commit/ca7b87e1c80c652e9b263fd663d63bcde95155c5))
+* **deps:** update dependency lucide-react to v1.34.0 ([#536](https://github.com/rpinelab/pin-keeper/issues/536)) ([571e976](https://github.com/rpinelab/pin-keeper/commit/571e976bb0b7446a90053460150dcc1415fb8cfb))
+* **deps:** update dependency lucide-react to v1.39.0 ([#541](https://github.com/rpinelab/pin-keeper/issues/541)) ([648801e](https://github.com/rpinelab/pin-keeper/commit/648801ee3204d7ceceb325c04295ded6faccb715))
+* **deps:** update dependency lucide-react to v1.40.0 ([#545](https://github.com/rpinelab/pin-keeper/issues/545)) ([f52b74a](https://github.com/rpinelab/pin-keeper/commit/f52b74a332bc4b4aa1697a2a8139d63819197720))
+* **deps:** update dependency lucide-react to v1.43.0 ([#551](https://github.com/rpinelab/pin-keeper/issues/551)) ([3f63da1](https://github.com/rpinelab/pin-keeper/commit/3f63da10a50ab9b10edf5a63d51589435efe3741))
+* **deps:** update react monorepo to v19.3.0 ([#553](https://github.com/rpinelab/pin-keeper/issues/553)) ([cb1155f](https://github.com/rpinelab/pin-keeper/commit/cb1155ffa0da4960553152a57f628fdaa53817f4))
+
 ## [1.8.6](https://github.com/rpinelab/pin-keeper/compare/v1.8.5...v1.8.6) (2026-08-09)
 
 
