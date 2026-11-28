@@ -43,7 +43,7 @@
     "@types/node": "24.19.4",
     "@types/react": "19.3.3",
     "@types/react-dom": "19.3.0",
-    "@wxt-dev/auto-icons": "1.1.2",
+    "@wxt-dev/auto-icons": "2.0.0",
     "@wxt-dev/module-react": "1.2.2",
     "lefthook": "2.2.3",
     "npm-run-all2": "9.1.0",
